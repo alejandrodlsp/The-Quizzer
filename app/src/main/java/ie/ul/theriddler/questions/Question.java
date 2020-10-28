@@ -33,8 +33,6 @@ public class Question
         public String GetDifficultyValue() { return mValue; };
     };
 
-    public Category mCategory;
-    public Difficulty mDifficulty;
     public String mQuestion;
     public String mCorrectAnswer;
     public String[] mIncorrectAnswers;
