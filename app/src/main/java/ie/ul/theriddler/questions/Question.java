@@ -20,10 +20,13 @@ public class Question
             mValue = value;
         }
         public int GetCategoryValue() { return mValue; };
-        };
+    };
 
     public enum Difficulty {
-        ANY("0"), EASY("easy"), MEDIUM("medium"), HARD("hard");
+        ANY("0"),
+        EASY("easy"),
+        MEDIUM("medium"),
+        HARD("hard");
 
         private final String mValue;
         Difficulty(final String value)
