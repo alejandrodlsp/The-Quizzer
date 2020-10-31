@@ -2,7 +2,10 @@ package ie.ul.theriddler;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.android.volley.RequestQueue;
@@ -24,11 +27,25 @@ public class MainActivity extends AppCompatActivity implements IOnAPIQueryCallba
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         QuestionHandler handler = new QuestionHandler(this, requestQueue);
         handler.QueryAPI(Question.Category.ALL, Question.Difficulty.EASY, 10);
+
+        Button loginButton = (Button) findViewById(R.id.loginButton);
+        loginButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this,login_register.class));
+            }
+        });
+
+        Button guestButton = (Button) findViewById(R.id.guestButton);
+        guestButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // goes to main hub
+            }
+        });
     }
 
     @Override
     public void OnAPIQueryCallback(ArrayList<Question> questions) {
-        TextView tv = findViewById(R.id.sampleText);
+        /** TextView tv = findViewById(R.id.sampleText);
 
         StringBuilder sb = new StringBuilder();
         for(Question qs : questions)
@@ -36,6 +53,9 @@ public class MainActivity extends AppCompatActivity implements IOnAPIQueryCallba
             sb.append(qs.mQuestion);
             sb.append("\n");
         }
-        tv.setText(sb.toString());
+        tv.setText(sb.toString()); **/
+
     }
+
+
 }
