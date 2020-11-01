@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "582127322240",
+    "firebase_url": "https://theriddler-firebase.firebaseio.com",
+    "project_id": "theriddler-firebase",
+    "storage_bucket": "theriddler-firebase.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:582127322240:android:fc2dd9abf730bf5bdd5265",
+        "android_client_info": {
+          "package_name": "ie.ul.theriddler"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "582127322240-m9hsp14gbc1i25bs8dac2rg9h9qfu518.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "ie.ul.theriddler",
+            "certificate_hash": "c7be454e6ebe3fad1985582ca32a136e706deffb"
+          }
+        },
+        {
+          "client_id": "582127322240-4qokof75te1it1b5i3i3m55derh2ulli.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBaa7uBKMv0ZZkzsUvr_v5qEcyMUaq4-dg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "582127322240-4qokof75te1it1b5i3i3m55derh2ulli.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
