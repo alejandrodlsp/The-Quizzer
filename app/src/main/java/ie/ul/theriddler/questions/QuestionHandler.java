@@ -1,6 +1,5 @@
 package ie.ul.theriddler.questions;
 
-import android.util.Base64;
 import android.util.Log;
 
 import com.android.volley.Request;

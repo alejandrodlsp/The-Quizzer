@@ -1,10 +1,12 @@
-package ie.ul.theriddler;
+package ie.ul.theriddler.login;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class login_register extends AppCompatActivity {
+import ie.ul.theriddler.R;
+
+public class LoginRegisterActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
