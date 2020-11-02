@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity implements IOnAPIQueryCallba
         Button guestButton = (Button) findViewById(R.id.guestButton);
         guestButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                // goes to main hub
+                startActivity(new Intent (MainActivity.this, mainHub.class));
             }
         });
     }
