@@ -1,4 +1,4 @@
-package ie.ul.theriddler.login;
+package ie.ul.theriddler.layout.login;
 
 import android.os.Bundle;
 

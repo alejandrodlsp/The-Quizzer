@@ -3,23 +3,29 @@ package ie.ul.theriddler.questions;
 public class Question
 {
     public enum Category {
-        ALL(0),
-        GENERAL_KNOWLEDGE(9),
-        SCIENCE_AND_NATURE(17),
-        HISTORY(23),
-        ART(25),
-        ANIMALS(27),
-        CELEBRITIES(26),
-        POLITICS(24),
-        GEOGRAPHY(22),
-        SPORT(21);
+        ALL(0, "All categories"),
+        GENERAL_KNOWLEDGE(9, "General Knowledge"),
+        MOVIES(11, "Movies"),
+        MUSIC(12, "Music"),
+        TV(14, "Television"),
+        VIDEO_GAMES(15, "Video Games"),
+        NATURE(17, "Nature"),
+        COMPUTERS(18, "Computers"),
+        SPORTS(21, "Sports"),
+        GEOGRAPHY(22, "Geography"),
+        HISTORY(23, "History"),
+        ART(25, "Art"),
+        ANIMALS(27, "Animals"),
+        VEHICLES(28, "Vehicles");
 
         private final int mValue;
-        Category(final int value)
+        private final String mTitle;
+        Category(final int value, final String title)
         {
-            mValue = value;
+            mValue = value; mTitle = title;
         }
         public int GetCategoryValue() { return mValue; };
+        public String ToString() { return mTitle; };
     };
 
     public enum Difficulty {

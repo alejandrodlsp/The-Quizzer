@@ -1,4 +1,4 @@
-package ie.ul.theriddler;
+package ie.ul.theriddler.layout;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -12,8 +12,9 @@ import com.android.volley.toolbox.Volley;
 
 import java.util.ArrayList;
 
-import ie.ul.theriddler.hub.MainHubActivity;
-import ie.ul.theriddler.login.LoginRegisterActivity;
+import ie.ul.theriddler.R;
+import ie.ul.theriddler.layout.hub.MainHubActivity;
+import ie.ul.theriddler.layout.login.LoginRegisterActivity;
 import ie.ul.theriddler.questions.IOnAPIQueryCallback;
 import ie.ul.theriddler.questions.Question;
 import ie.ul.theriddler.questions.QuestionHandler;

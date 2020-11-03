@@ -11,10 +11,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".hub.HighScoresActivity"></activity>
-        <activity android:name=".hub.MainHubActivity" />
-        <activity android:name=".login.LoginRegisterActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".layout.hub.HighScoresActivity"></activity>
+        <activity android:name=".layout.hub.MainHubActivity" />
+        <activity android:name=".layout.login.LoginRegisterActivity" />
+        <activity android:name=".layout.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

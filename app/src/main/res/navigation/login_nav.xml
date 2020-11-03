@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/login"
-        android:name="ie.ul.theriddler.login.LoginFragment"
+        android:name="ie.ul.theriddler.layout.login.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/register"
-        android:name="ie.ul.theriddler.login.RegisterFragment"
+        android:name="ie.ul.theriddler.layout.login.RegisterFragment"
         android:label="fragment_register"
         tools:layout="@layout/fragment_register" />
 </navigation>

@@ -1,4 +1,4 @@
-package ie.ul.theriddler.hub;
+package ie.ul.theriddler.layout.hub;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,20 +9,19 @@ import android.widget.Button;
 
 import ie.ul.theriddler.R;
 
-public class MainHubActivity extends AppCompatActivity {
+public class HighScoresActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_hub);
+        setContentView(R.layout.activity_high_scores);
 
-        final Button high_score_button = (Button) findViewById(R.id.high_score_button);
-        high_score_button.setOnClickListener(new View.OnClickListener() {
+        Button main_hub_button = (Button) findViewById(R.id.main_hub_button);
+        main_hub_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent (MainHubActivity.this, HighScoresActivity.class));
+                startActivity( new Intent (HighScoresActivity.this, MainHubActivity.class));
             }
         });
     }
-
 }
