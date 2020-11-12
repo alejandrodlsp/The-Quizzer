@@ -2,157 +2,136 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+    android:layout_width="400dp"
     android:layout_height="match_parent"
     tools:context=".layout.hub.MainHubActivity">
 
-    <Button
-        android:id="@+id/sports_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="464dp"
-        android:text="Sports"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/all_questions_button" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/geography_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="520dp"
-        android:text="Geography"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/all_questions_button" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-    <Button
-        android:id="@+id/history_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="160dp"
-        android:layout_marginTop="180dp"
-        android:text="History"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/all_questions_button" />
+            <Button
+                android:id="@+id/all_questions_button"
+                android:layout_width="400dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="0dp"
+                android:text="All Questions" />
 
-    <Button
-        android:id="@+id/art_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="160dp"
-        android:layout_marginTop="240dp"
-        android:text="Art"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/all_questions_button" />
+            <Button
+                android:id="@+id/general_knowledge_button"
+                android:layout_width="400dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="0dp"
+                android:text="General Knowledge" />
 
-    <Button
-        android:id="@+id/animals_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="160dp"
-        android:layout_marginTop="296dp"
-        android:text="Animals"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/all_questions_button" />
+            <Button
+                android:id="@+id/sports_button"
+                android:layout_width="400dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="0dp"
+                android:text="Sports" />
 
-    <Button
-        android:id="@+id/vehicles_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="160dp"
-        android:layout_marginTop="352dp"
-        android:text="Vehicles"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/all_questions_button" />
+            <Button
+                android:id="@+id/computers_button"
+                android:layout_width="400dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="0dp"
+                android:text="Computers" />
+
+            <Button
+                android:id="@+id/video_games_button"
+                android:layout_width="400dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="Video Games" />
+
+            <Button
+                android:id="@+id/animals_button"
+                android:layout_width="400dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="Animals" />
+
+            <Button
+                android:id="@+id/tv_button"
+                android:layout_width="400dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="Telivison" />
+
+            <Button
+                android:id="@+id/movies_button"
+                android:layout_width="400dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="0dp"
+                android:text="Movies" />
+
+            <Button
+                android:id="@+id/music_button"
+                android:layout_width="400dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="Music" />
+
+            <Button
+                android:id="@+id/nature_button"
+                android:layout_width="400dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="Nature" />
+
+            <Button
+                android:id="@+id/geography_button"
+                android:layout_width="400dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="Geography" />
+
+            <Button
+                android:id="@+id/vehicles_button"
+                android:layout_width="400dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="Vehicles" />
+
+            <Button
+                android:id="@+id/art_button"
+                android:layout_width="400dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="Art" />
+
+            <Button
+                android:id="@+id/history_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="0dp"
+                android:text="History" />
+        </LinearLayout>
+    </ScrollView>
 
     <Button
         android:id="@+id/high_score_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="#FF9800"
         android:text="High Scores"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.943"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/all_questions_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:text="All Questions"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/high_score_button" />
-
-    <Button
-        android:id="@+id/general_knowledge_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="56dp"
-        android:text="General Knowledge"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/all_questions_button" />
-
-    <Button
-        android:id="@+id/movies_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="116dp"
-        android:text="Movies"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/all_questions_button" />
-
-    <Button
-        android:id="@+id/music_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="180dp"
-        android:text="Music"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/all_questions_button" />
-
-    <Button
-        android:id="@+id/tv_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="240dp"
-        android:text="Telivison"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/all_questions_button" />
-
-    <Button
-        android:id="@+id/video_games_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="296dp"
-        android:text="Video Games"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/all_questions_button" />
-
-    <Button
-        android:id="@+id/nature_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="352dp"
-        android:text="Nature"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/all_questions_button" />
-
-    <Button
-        android:id="@+id/computers_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="408dp"
-        android:text="Computers"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/all_questions_button" />
 </androidx.constraintlayout.widget.ConstraintLayout>
