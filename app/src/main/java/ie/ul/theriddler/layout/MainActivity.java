@@ -19,16 +19,12 @@ import ie.ul.theriddler.questions.IOnAPIQueryCallback;
 import ie.ul.theriddler.questions.Question;
 import ie.ul.theriddler.questions.QuestionHandler;
 
-public class MainActivity extends AppCompatActivity implements IOnAPIQueryCallback {
+public class MainActivity extends AppCompatActivity  {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
-        QuestionHandler handler = new QuestionHandler(this, requestQueue);
-        handler.QueryAPI(Question.Category.ALL, Question.Difficulty.EASY, 10);
 
         Button loginButton = (Button) findViewById(R.id.loginButton);
         loginButton.setOnClickListener(new View.OnClickListener() {
@@ -43,20 +39,6 @@ public class MainActivity extends AppCompatActivity implements IOnAPIQueryCallba
                 startActivity(new Intent (MainActivity.this, MainHubActivity.class));
             }
         });
-    }
-
-    @Override
-    public void OnAPIQueryCallback(ArrayList<Question> questions) {
-        /** TextView tv = findViewById(R.id.sampleText);
-
-        StringBuilder sb = new StringBuilder();
-        for(Question qs : questions)
-        {
-            sb.append(qs.mQuestion);
-            sb.append("\n");
-        }
-        tv.setText(sb.toString()); **/
-
     }
 
 

@@ -1,5 +1,12 @@
 package ie.ul.theriddler.questions;
 
+import android.os.Build;
+
+import androidx.annotation.RequiresApi;
+
+import java.util.Arrays;
+import java.util.Optional;
+
 public class Question
 {
     public enum Category {
@@ -26,6 +33,13 @@ public class Question
         }
         public int GetCategoryValue() { return mValue; };
         public String ToString() { return mTitle; };
+
+        public static Category valueOf(int index) {
+            for (Category l : Category.values()) {
+                if (l.GetCategoryValue() == index) return l;
+            }
+            throw new IllegalArgumentException("Category not found!");
+        }
     };
 
     public enum Difficulty {

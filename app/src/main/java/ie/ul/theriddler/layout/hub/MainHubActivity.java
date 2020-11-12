@@ -8,9 +8,10 @@ import android.view.View;
 import android.widget.Button;
 
 import ie.ul.theriddler.R;
+import ie.ul.theriddler.layout.game.GameNavActivity;
 
 public class MainHubActivity extends AppCompatActivity {
-
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,8 +29,8 @@ public class MainHubActivity extends AppCompatActivity {
         all_questions_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent toNewActivity = new Intent(MainHubActivity.this, HighScoresActivity.class);
-                toNewActivity.putExtra("CATEGORYINDEX", 0);
+                Intent toNewActivity = new Intent(MainHubActivity.this, GameNavActivity.class);
+                toNewActivity.putExtra("CATEGORY_INDEX", 0);
                 startActivity(toNewActivity);
             }
         });
@@ -38,8 +39,8 @@ public class MainHubActivity extends AppCompatActivity {
         general_knowledge_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent toNewActivity = new Intent(MainHubActivity.this, HighScoresActivity.class);
-                toNewActivity.putExtra("CATEGORYINDEX", 9);
+                Intent toNewActivity = new Intent(MainHubActivity.this, GameNavActivity.class);
+                toNewActivity.putExtra("CATEGORY_INDEX", 9);
                 startActivity(toNewActivity);
             }
         });
@@ -48,8 +49,8 @@ public class MainHubActivity extends AppCompatActivity {
         movies_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent toNewActivity = new Intent(MainHubActivity.this, HighScoresActivity.class);
-                toNewActivity.putExtra("CATEGORYINDEX", 11);
+                Intent toNewActivity = new Intent(MainHubActivity.this, GameNavActivity.class);
+                toNewActivity.putExtra("CATEGORY_INDEX", 11);
                 startActivity(toNewActivity);
             }
         });
@@ -58,8 +59,8 @@ public class MainHubActivity extends AppCompatActivity {
         music_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent toNewActivity = new Intent(MainHubActivity.this, HighScoresActivity.class);
-                toNewActivity.putExtra("CATEGORYINDEX", 12);
+                Intent toNewActivity = new Intent(MainHubActivity.this, GameNavActivity.class);
+                toNewActivity.putExtra("CATEGORY_INDEX", 12);
                 startActivity(toNewActivity);
             }
         });
@@ -68,8 +69,8 @@ public class MainHubActivity extends AppCompatActivity {
         tv_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent toNewActivity = new Intent(MainHubActivity.this, HighScoresActivity.class);
-                toNewActivity.putExtra("CATEGORYINDEX", 14);
+                Intent toNewActivity = new Intent(MainHubActivity.this, GameNavActivity.class);
+                toNewActivity.putExtra("CATEGORY_INDEX", 14);
                 startActivity(toNewActivity);
             }
         });
@@ -78,8 +79,8 @@ public class MainHubActivity extends AppCompatActivity {
         video_games_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent toNewActivity = new Intent(MainHubActivity.this, HighScoresActivity.class);
-                toNewActivity.putExtra("CATEGORYINDEX", 14);
+                Intent toNewActivity = new Intent(MainHubActivity.this, GameNavActivity.class);
+                toNewActivity.putExtra("CATEGORY_INDEX", 14);
                 startActivity(toNewActivity);
             }
         });
@@ -88,8 +89,8 @@ public class MainHubActivity extends AppCompatActivity {
         computers_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent toNewActivity = new Intent(MainHubActivity.this, HighScoresActivity.class);
-                toNewActivity.putExtra("CATEGORYINDEX", 18);
+                Intent toNewActivity = new Intent(MainHubActivity.this, GameNavActivity.class);
+                toNewActivity.putExtra("CATEGORY_INDEX", 18);
                 startActivity(toNewActivity);
             }
         });
@@ -98,8 +99,8 @@ public class MainHubActivity extends AppCompatActivity {
         sports_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent toNewActivity = new Intent(MainHubActivity.this, HighScoresActivity.class);
-                toNewActivity.putExtra("CATEGORYINDEX", 21);
+                Intent toNewActivity = new Intent(MainHubActivity.this, GameNavActivity.class);
+                toNewActivity.putExtra("CATEGORY_INDEX", 21);
                 startActivity(toNewActivity);
             }
         });
@@ -108,8 +109,8 @@ public class MainHubActivity extends AppCompatActivity {
         geography_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent toNewActivity = new Intent(MainHubActivity.this, HighScoresActivity.class);
-                toNewActivity.putExtra("CATEGORYINDEX", 22);
+                Intent toNewActivity = new Intent(MainHubActivity.this, GameNavActivity.class);
+                toNewActivity.putExtra("CATEGORY_INDEX", 22);
                 startActivity(toNewActivity);
             }
         });
@@ -118,8 +119,8 @@ public class MainHubActivity extends AppCompatActivity {
         history_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent toNewActivity = new Intent(MainHubActivity.this, HighScoresActivity.class);
-                toNewActivity.putExtra("CATEGORYINDEX", 23);
+                Intent toNewActivity = new Intent(MainHubActivity.this, GameNavActivity.class);
+                toNewActivity.putExtra("CATEGORY_INDEX", 23);
                 startActivity(toNewActivity);
             }
         });
@@ -128,8 +129,8 @@ public class MainHubActivity extends AppCompatActivity {
         art_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent toNewActivity = new Intent(MainHubActivity.this, HighScoresActivity.class);
-                toNewActivity.putExtra("CATEGORYINDEX", 25);
+                Intent toNewActivity = new Intent(MainHubActivity.this, GameNavActivity.class);
+                toNewActivity.putExtra("CATEGORY_INDEX", 25);
                 startActivity(toNewActivity);
             }
         });
@@ -138,8 +139,8 @@ public class MainHubActivity extends AppCompatActivity {
         animals_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent toNewActivity = new Intent(MainHubActivity.this, HighScoresActivity.class);
-                toNewActivity.putExtra("CATEGORYINDEX", 27);
+                Intent toNewActivity = new Intent(MainHubActivity.this, GameNavActivity.class);
+                toNewActivity.putExtra("CATEGORY_INDEX", 27);
                 startActivity(toNewActivity);
             }
         });
@@ -148,8 +149,8 @@ public class MainHubActivity extends AppCompatActivity {
         vehicles_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent toNewActivity = new Intent(MainHubActivity.this, HighScoresActivity.class);
-                toNewActivity.putExtra("CATEGORYINDEX", 28);
+                Intent toNewActivity = new Intent(MainHubActivity.this, GameNavActivity.class);
+                toNewActivity.putExtra("CATEGORY_INDEX", 28);
                 startActivity(toNewActivity);
             }
         });
