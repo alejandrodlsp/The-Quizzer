@@ -1,5 +1,6 @@
 package ie.ul.theriddler.layout.login;
 
+import android.content.Intent;
 import android.media.browse.MediaBrowser;
 import android.os.Bundle;
 
@@ -7,6 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -25,6 +28,7 @@ import com.google.firebase.auth.FirebaseUser;
 import java.util.concurrent.Executor;
 
 import ie.ul.theriddler.R;
+import ie.ul.theriddler.layout.hub.MainHubActivity;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -103,25 +107,78 @@ public class RegisterFragment extends Fragment {
         mRegisterButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                createAccount(mEmail, mPassword);
+                email       = mEmail.getText().toString().trim();
+                password    = mPassword.getText().toString();
+
+                if(validateName() | validateEmail() | validatePassword()) {
+                    progressBar.setVisibility(View.VISIBLE);
+                    createAccount();
+                }
             }
         });
     }
 
-    public void createAccount(EditText email_, EditText password_) {
-        email       = email_.getText().toString();
-        password    = password_.getText().toString();
+    private Boolean validateName() {
+        String checker = mName.getText().toString();
 
+        if(checker.isEmpty()){
+            mName.setError("Field cannot be empty.");
+            return false;
+        } else {
+            mName.setError(null);
+            return true;
+        }
+    }
+    private Boolean validateEmail() {
+        String checker = mEmail.getText().toString();
+        String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+
+        if(checker.isEmpty()){
+            mEmail.setError("Field cannot be empty.");
+            return false;
+        } else if (!checker.matches(emailPattern)) {
+            mEmail.setError("Invalid email address");
+            return false;
+        } else {
+            mEmail.setError(null);
+            return true;
+        }
+    }
+
+    private  Boolean validatePassword() {
+        String checker = mPassword.getText().toString();
+        String passwordValues = "^" +
+                ".{4,}" +               //at least 4 characters
+                "$";
+
+        if(checker.isEmpty()) {
+            mPassword.setError("Field cannot be Empty");
+            return false;
+        } else if(!checker.matches(passwordValues)) {
+            mPassword.setError("Password is too weak.");
+            return false;
+        } else {
+            mPassword.setError(null);
+            return true;
+        }
+    }
+
+    public void createAccount() {
         fAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()) {
                     Log.d(TAG, "onComplete: createUserWithEmail:success");
+                    Toast.makeText(getActivity(), "Account Created", Toast.LENGTH_SHORT).show();
                     FirebaseUser user = fAuth.getCurrentUser();
+
+                    Intent intent = new Intent();
+                    intent.setClass(getActivity(), MainHubActivity.class);
+                    getActivity().startActivity(intent);
                 } else {
-                    // If sign in fails, display a message to the user.
+                    // If register fails, display a message to the user.
                     Log.w(TAG, "createUserWithEmail:failure", task.getException());
-                    Toast.makeText(getActivity(), "Authentication failed.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "Account cannot be created", Toast.LENGTH_SHORT).show();
                 }
             }
         });
