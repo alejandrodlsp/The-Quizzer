@@ -8,26 +8,81 @@
 
     <Button
         android:id="@+id/main_hub_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_width="357dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
-        android:text="Go Back"
+        android:layout_marginEnd="8dp"
+        android:drawableLeft="@drawable/ic_back"
+        android:text="Highscores"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/general_knowledge_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="150dp"
-        android:layout_marginTop="350dp"
-        android:layout_marginEnd="150dp"
-        android:layout_marginBottom="350dp"
-        android:text="Good job! You have many highscores (To be displayed)"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="75dp"
+        android:layout_marginEnd="35dp"
+        android:text="General Knowledge: 50 points!"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/main_hub_button" />
+
+    <TextView
+        android:id="@+id/science_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="23dp"
+        android:layout_marginEnd="35dp"
+        android:text="Science: 30 points!"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/general_knowledge_textView" />
+
+    <TextView
+        android:id="@+id/music_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="21dp"
+        android:layout_marginEnd="35dp"
+        android:text="Music: 40 points!"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/computers_textView" />
+
+    <TextView
+        android:id="@+id/ranking_texView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="35dp"
+        android:layout_marginEnd="35dp"
+        android:layout_marginBottom="16dp"
+        android:text="Total Ranking: 13th!"
+        android:textColor="#008DF8"
+        android:textSize="21sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/computers_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="35dp"
+        android:text="Computers: 100 points!"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/science_textView" />
 </androidx.constraintlayout.widget.ConstraintLayout>

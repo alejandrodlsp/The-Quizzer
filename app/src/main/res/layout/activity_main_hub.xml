@@ -7,8 +7,17 @@
     tools:context=".layout.hub.MainHubActivity">
 
     <ScrollView
+        android:id="@+id/scrollView2"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="150dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -17,121 +26,167 @@
 
             <Button
                 android:id="@+id/all_questions_button"
-                android:layout_width="400dp"
+                android:layout_width="373dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
+                android:layout_marginStart="4dp"
                 android:layout_marginTop="0dp"
+                android:drawableLeft="@drawable/ic_all_questions"
                 android:text="All Questions" />
 
             <Button
                 android:id="@+id/general_knowledge_button"
-                android:layout_width="400dp"
+                android:layout_width="373dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
+                android:layout_marginStart="4dp"
                 android:layout_marginTop="0dp"
+                android:drawableLeft="@drawable/ic_general_knowledge"
                 android:text="General Knowledge" />
 
             <Button
                 android:id="@+id/sports_button"
-                android:layout_width="400dp"
+                android:layout_width="373dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
+                android:layout_marginStart="4dp"
                 android:layout_marginTop="0dp"
+                android:drawableLeft="@drawable/ic_sports"
                 android:text="Sports" />
 
             <Button
                 android:id="@+id/computers_button"
-                android:layout_width="400dp"
+                android:layout_width="373dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
+                android:layout_marginStart="4dp"
                 android:layout_marginTop="0dp"
+                android:drawableLeft="@drawable/ic_computers"
                 android:text="Computers" />
 
             <Button
                 android:id="@+id/video_games_button"
-                android:layout_width="400dp"
+                android:layout_width="373dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
+                android:layout_marginStart="4dp"
+                android:drawableLeft="@drawable/ic_video_games"
                 android:text="Video Games" />
 
             <Button
                 android:id="@+id/animals_button"
-                android:layout_width="400dp"
+                android:layout_width="373dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
+                android:layout_marginStart="4dp"
+                android:backgroundTint="#D8D7D7"
+                android:drawableLeft="@drawable/ic_animals"
                 android:text="Animals" />
 
             <Button
                 android:id="@+id/tv_button"
-                android:layout_width="400dp"
+                android:layout_width="373dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
+                android:layout_marginStart="4dp"
+                android:drawableLeft="@drawable/ic_tv"
                 android:text="Telivison" />
 
             <Button
                 android:id="@+id/movies_button"
-                android:layout_width="400dp"
+                android:layout_width="373dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
+                android:layout_marginStart="4dp"
                 android:layout_marginTop="0dp"
+                android:drawableLeft="@drawable/ic_movies"
                 android:text="Movies" />
 
             <Button
                 android:id="@+id/music_button"
-                android:layout_width="400dp"
+                android:layout_width="373dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
+                android:layout_marginStart="4dp"
+                android:drawableLeft="@drawable/ic_music"
                 android:text="Music" />
 
             <Button
                 android:id="@+id/nature_button"
-                android:layout_width="400dp"
+                android:layout_width="373dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
+                android:layout_marginStart="4dp"
+                android:drawableLeft="@drawable/ic_nature"
                 android:text="Nature" />
 
             <Button
                 android:id="@+id/geography_button"
-                android:layout_width="400dp"
+                android:layout_width="373dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
+                android:layout_marginStart="4dp"
+                android:drawableLeft="@drawable/ic_geography"
                 android:text="Geography" />
 
             <Button
                 android:id="@+id/vehicles_button"
-                android:layout_width="400dp"
+                android:layout_width="373dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
+                android:layout_marginStart="4dp"
+                android:drawableLeft="@drawable/ic_vehicles"
                 android:text="Vehicles" />
 
             <Button
                 android:id="@+id/art_button"
-                android:layout_width="400dp"
+                android:layout_width="373dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
+                android:layout_marginStart="4dp"
+                android:drawableLeft="@drawable/ic_art"
                 android:text="Art" />
 
             <Button
                 android:id="@+id/history_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
+                android:layout_marginStart="4dp"
                 android:layout_marginTop="0dp"
+                android:drawableLeft="@drawable/ic_history"
                 android:text="History" />
         </LinearLayout>
     </ScrollView>
 
     <Button
         android:id="@+id/high_score_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="380dp"
+        android:layout_height="90dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:backgroundTint="#FF9800"
-        android:text="High Scores"
+        android:layout_marginTop="4dp"
+        android:backgroundTint="#DFDFDF"
+        android:drawableRight="@drawable/ic_forward"
+        android:text="The Quizzer"
+        android:textColor="#5B49FB"
+        android:textSize="21sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.943"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/total_points_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="16dp"
+        android:text="Total Points: 220"
+        android:textColor="#009688"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/scrollView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/high_score_button" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="16dp"
+        android:text="Ranking: 13th"
+        android:textColor="#009688"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/scrollView2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/high_score_button" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
