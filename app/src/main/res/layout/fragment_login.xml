@@ -66,6 +66,7 @@
         android:autofillHints=""
         android:background="@drawable/indent"
         android:ems="10"
+        android:fontFamily="@font/antic_slab"
         android:hint="PASSWORD"
         android:inputType="textPassword"
         android:textAlignment="center"
