@@ -2,9 +2,11 @@ package ie.ul.theriddler.layout.game;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import ie.ul.theriddler.R;
+import ie.ul.theriddler.layout.hub.MainHubActivity;
 
 public class GameNavActivity extends AppCompatActivity {
 
@@ -21,6 +23,12 @@ public class GameNavActivity extends AppCompatActivity {
     public int GetCategoryIndex()
     {
         return mCategoryIndex;
+    }
+
+    public void NavigateMainHub()
+    {
+        Intent toNewActivity = new Intent(this, MainHubActivity.class);
+        startActivity(toNewActivity);
     }
 
 }

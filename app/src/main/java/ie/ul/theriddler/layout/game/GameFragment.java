@@ -7,6 +7,7 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
+import android.os.CountDownTimer;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,10 +30,15 @@ import ie.ul.theriddler.questions.QuestionHandler;
 public class GameFragment extends Fragment implements IOnAPIQueryCallback {
 
     private QuestionHandler mQuestionHandler;
-    private Question.Category mCurrentCategory;
+    
+    private CountDownTimer mCountdownTimer;
+    private final long kMaxTimeMilliseconds = 6000;
+    private long mTimeLeftMilliseconds = 0;
 
     private Question mCurrentQuestion;
     private int mCorrectIndex;
+    private Question.Category mCurrentCategory;
+    private final Question.Difficulty kDifficulty = Question.Difficulty.MEDIUM;
 
     private int mCorrectAnswerCount;
 
@@ -67,7 +73,9 @@ public class GameFragment extends Fragment implements IOnAPIQueryCallback {
         /* Initialize request queue and question handler */
         RequestQueue requestQueue = Volley.newRequestQueue(currentActivity);
         mQuestionHandler = new QuestionHandler(this, requestQueue);
-        mQuestionHandler.QueryAPI(mCurrentCategory, Question.Difficulty.MEDIUM, 1);
+        mQuestionHandler.QueryAPI(mCurrentCategory, kDifficulty, 1);
+
+        UpdateTimerText();
 
         /* Initialize parameters */
         mCorrectAnswerCount = 0;
@@ -97,8 +105,9 @@ public class GameFragment extends Fragment implements IOnAPIQueryCallback {
         });
         Button exitButton = (Button) currentActivity.findViewById(R.id.GamExitButton);
         exitButton.setOnClickListener(new View.OnClickListener() {
+            // TODO: Go back to main hub
             @Override
-            public void onClick(View v) { System.out.println("ASDASDASD"); EndGame(); }
+            public void onClick(View v) { activity.NavigateMainHub(); }
         });
     }
 
@@ -125,6 +134,8 @@ public class GameFragment extends Fragment implements IOnAPIQueryCallback {
                 buttonIndex++;
             }
         }
+
+        StartTimer();
     }
 
     Button GetButtonByIndex(int index)
@@ -142,6 +153,7 @@ public class GameFragment extends Fragment implements IOnAPIQueryCallback {
     void OnAnswerClicked(int index)
     {
         if(mCurrentQuestion == null) return;
+        if(mCountdownTimer != null) mCountdownTimer.cancel();
         if(index == mCorrectIndex) OnCorrectAnswer();
         else OnInCorrectAnswer();
     }
@@ -163,5 +175,39 @@ public class GameFragment extends Fragment implements IOnAPIQueryCallback {
         Bundle bundle = new Bundle();
         bundle.putInt("CORRECT_ANSWERS", mCorrectAnswerCount);
         Navigation.findNavController(getView()).navigate(R.id.action_gameFragment_to_scoreFragment, bundle);
+    }
+
+    void StartTimer()
+    {
+        if(mCountdownTimer != null) mCountdownTimer.cancel();
+
+        mTimeLeftMilliseconds = kMaxTimeMilliseconds;
+        mCountdownTimer = new CountDownTimer(kMaxTimeMilliseconds, 1000) {
+            @Override
+            public void onTick(long l) {
+                mTimeLeftMilliseconds = l;
+                UpdateTimerText();
+            }
+
+            @Override
+            public void onFinish() {
+                EndGame();
+            }
+        }.start();
+    }
+
+    void UpdateTimerText()
+    {
+        int seconds = (int) mTimeLeftMilliseconds % 60000 / 1000;
+        int millis = (int) mTimeLeftMilliseconds % 1000 / 100;
+
+        String timeString = "";
+        if(seconds < 10) timeString += "0";
+        timeString += seconds;
+        if(millis < 10) timeString += "0";
+        timeString += millis;
+
+        TextView tv = getView().findViewById(R.id.GameTimer);
+        tv.setText(timeString);
     }
 }
