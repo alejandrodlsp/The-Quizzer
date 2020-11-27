@@ -1,9 +1,10 @@
 package ie.ul.theriddler.layout.game;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
@@ -21,96 +22,115 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import ie.ul.theriddler.R;
-import ie.ul.theriddler.layout.hub.HighScoresActivity;
-import ie.ul.theriddler.layout.hub.MainHubActivity;
 import ie.ul.theriddler.questions.IOnAPIQueryCallback;
 import ie.ul.theriddler.questions.Question;
 import ie.ul.theriddler.questions.QuestionHandler;
 
+/**
+ *
+ */
 public class GameFragment extends Fragment implements IOnAPIQueryCallback {
 
-    private QuestionHandler mQuestionHandler;
+    private QuestionHandler mQuestionHandler;           // Instance of a QuestionHandler object
     
-    private CountDownTimer mCountdownTimer;
-    private final long kMaxTimeMilliseconds = 6000;
-    private long mTimeLeftMilliseconds = 0;
+    private CountDownTimer mCountdownTimer;             // Instance of the current countdown timer; null if no timer is active
+    private final long kMaxTimeMilliseconds = 6000;     // Starting value of timer in milliseconds
+    private long mTimeLeftMilliseconds = 0;             // Current timer value in milliseconds
 
-    private Question mCurrentQuestion;
-    private int mCorrectIndex;
-    private Question.Category mCurrentCategory;
-    private final Question.Difficulty kDifficulty = Question.Difficulty.MEDIUM;
+    private Question mCurrentQuestion;                  // Current active question; null if no question is active (waiting for API callback)
+    private int mCorrectIndex;                          // Index of the correct answer for current question
+    private Question.Category mCurrentCategory;         // Active category to query questions from
+    private final Question.Difficulty kDifficulty = Question.Difficulty.MEDIUM; // Active difficulty to query questions from
 
-    private int mCorrectAnswerCount;
+    private GameNavActivity mActivity;                           // Parent activity
 
+    private int mCorrectAnswerCount;                    // Count of total correct answered questions (Score)
+
+    /**
+     * Required empty public constructor
+     */
     public GameFragment() {
-        // Required empty public constructor
     }
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-
+    /**
+     * On create view override method from Android fragment
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return Inflated layout
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_game, container, false);
     }
 
+    /**
+     * Overrides callback called when fragment view is created
+     * @param savedInstanceState
+     */
     @Override
-    public void onActivityCreated(Bundle savedInstanceState)
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState)
     {
-        super.onActivityCreated(savedInstanceState);
+        /* Call super method */
+        super.onViewCreated(view, savedInstanceState);
 
+        /* Gets current GameNav activity */
         Activity currentActivity = getActivity();
         if(!(currentActivity instanceof GameNavActivity))
             return;             // TODO: Error handling
+        mActivity = (GameNavActivity) currentActivity;
 
-        /* Get category from game nav activity */
-        GameNavActivity activity = (GameNavActivity) currentActivity;
-        int category = activity.GetCategoryIndex();
+        /* Gets current category from GameNavActivity */
+        int category = mActivity.GetCategoryIndex();
         mCurrentCategory = Question.Category.valueOf(category);
 
         /* Initialize request queue and question handler */
-        RequestQueue requestQueue = Volley.newRequestQueue(currentActivity);
+        RequestQueue requestQueue = Volley.newRequestQueue(mActivity);
         mQuestionHandler = new QuestionHandler(this, requestQueue);
+        /* Queries question API and waits for response */
         mQuestionHandler.QueryAPI(mCurrentCategory, kDifficulty, 1);
-
-        UpdateTimerText();
 
         /* Initialize parameters */
         mCorrectAnswerCount = 0;
         mCorrectIndex = -1;
         mCurrentQuestion = null;
 
+        /* Initialize text fields with default values */
+        UpdateTimerText();
+        UpdateScoreText();
+
         /* Button event listeners */
-        Button question1Button = (Button) currentActivity.findViewById(R.id.GameAnswer1);
+        Button question1Button = (Button) mActivity.findViewById(R.id.GameAnswer1);
         question1Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) { OnAnswerClicked(0); }
         });
-        Button question2Button = (Button) currentActivity.findViewById(R.id.GameAnswer2);
+        Button question2Button = (Button) mActivity.findViewById(R.id.GameAnswer2);
         question2Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) { OnAnswerClicked(1); }
         });
-        Button question3Button = (Button) currentActivity.findViewById(R.id.GameAnswer3);
+        Button question3Button = (Button) mActivity.findViewById(R.id.GameAnswer3);
         question3Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) { OnAnswerClicked(2); }
         });
-        Button question4Button = (Button) currentActivity.findViewById(R.id.GameAnswer4);
+        Button question4Button = (Button) mActivity.findViewById(R.id.GameAnswer4);
         question4Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) { OnAnswerClicked(3); }
         });
-        Button exitButton = (Button) currentActivity.findViewById(R.id.GamExitButton);
+        Button exitButton = (Button) mActivity.findViewById(R.id.GamExitButton);
         exitButton.setOnClickListener(new View.OnClickListener() {
-            // TODO: Go back to main hub
             @Override
-            public void onClick(View v) { activity.NavigateMainHub(); }
+            public void onClick(View v) { mActivity.NavigateMainHub(); }
         });
     }
 
+    /**
+     * Callback from questions API executed when a successful API question response is received
+     * @param questions the result from the question query to the OpenTriviaDB API
+     */
     @Override
     public void OnAPIQueryCallback(ArrayList<Question> questions) {
         if(questions.size() < 1) return; // TODO: Error handling
@@ -120,9 +140,11 @@ public class GameFragment extends Fragment implements IOnAPIQueryCallback {
 
         mCurrentQuestion = questions.get(0);
 
+        /* Change question title */
         TextView questionTitle = (TextView) getView().findViewById(R.id.GameQuestion);
         questionTitle.setText(mCurrentQuestion.mQuestion);
 
+        /* Change question answers randomly */
         mCorrectIndex = new Random().nextInt(4);
         int buttonIndex = 0;
         for(int i = 0; i < 4; i ++)
@@ -135,9 +157,14 @@ public class GameFragment extends Fragment implements IOnAPIQueryCallback {
             }
         }
 
+        /* Starts question countdown timer*/
         StartTimer();
     }
 
+    /**
+     * @param index index of a question answer (Range 0 to 3 inclusive)
+     * @return the button view associated with that answer index
+     */
     Button GetButtonByIndex(int index)
     {
         switch(index)
@@ -150,14 +177,24 @@ public class GameFragment extends Fragment implements IOnAPIQueryCallback {
         }
     }
 
+    /**
+     * Called when an answer is clicked
+     * @param index index of the answer clicked
+     */
     void OnAnswerClicked(int index)
     {
         if(mCurrentQuestion == null) return;
         if(mCountdownTimer != null) mCountdownTimer.cancel();
         if(index == mCorrectIndex) OnCorrectAnswer();
         else OnInCorrectAnswer();
+
+        /* Update score text view UI */
+        UpdateScoreText();
     }
 
+    /**
+     * Method called when a correct answer is clicked
+     */
     void OnCorrectAnswer()
     {
         mCurrentQuestion = null;
@@ -165,18 +202,26 @@ public class GameFragment extends Fragment implements IOnAPIQueryCallback {
         mQuestionHandler.QueryAPI(mCurrentCategory, Question.Difficulty.MEDIUM, 1);
     }
 
+    /**
+     * Method called when an incorrect answer is clicked
+     */
     void OnInCorrectAnswer()
     {
         EndGame();
     }
 
+    /**
+     * Finishes game and redirects to score fragment
+     */
     void EndGame()
     {
-        Bundle bundle = new Bundle();
-        bundle.putInt("CORRECT_ANSWERS", mCorrectAnswerCount);
-        Navigation.findNavController(getView()).navigate(R.id.action_gameFragment_to_scoreFragment, bundle);
+        mActivity.mCurrentScore = mCorrectAnswerCount;
+        Navigation.findNavController(getView()).navigate(R.id.action_gameFragment_to_scoreFragment);
     }
 
+    /**
+     * Starts timer for current question
+     */
     void StartTimer()
     {
         if(mCountdownTimer != null) mCountdownTimer.cancel();
@@ -196,6 +241,9 @@ public class GameFragment extends Fragment implements IOnAPIQueryCallback {
         }.start();
     }
 
+    /**
+     * Updates UI for timer text view
+     */
     void UpdateTimerText()
     {
         int seconds = (int) mTimeLeftMilliseconds % 60000 / 1000;
@@ -209,5 +257,14 @@ public class GameFragment extends Fragment implements IOnAPIQueryCallback {
 
         TextView tv = getView().findViewById(R.id.GameTimer);
         tv.setText(timeString);
+    }
+
+    /**
+     * Updates UI for score text view
+     */
+    void UpdateScoreText()
+    {
+        TextView tv = getView().findViewById(R.id.GameQuestionScore);
+        tv.setText("Score: " + mCorrectAnswerCount);
     }
 }

@@ -1,5 +1,6 @@
 package ie.ul.theriddler.layout.game;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -19,15 +20,19 @@ import ie.ul.theriddler.layout.hub.MainHubActivity;
 
 public class ScoreFragment extends Fragment {
 
+    /**
+     * Required empty public constructor
+     */
     public ScoreFragment() {
-        // Required empty public constructor
     }
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-
+    /**
+     * On create view override method from Android fragment
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -35,6 +40,10 @@ public class ScoreFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_score, container, false);
     }
 
+    /**
+     * @param view
+     * @param savedInstanceState
+     */
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState)
     {
@@ -48,10 +57,12 @@ public class ScoreFragment extends Fragment {
             }
         });
 
-        if(savedInstanceState != null) {
-            int correctAnswerCount = savedInstanceState.getInt("CORRECT_ANSWERS");
-            TextView correctCount = (TextView) view.findViewById(R.id.ScoreScore);
-            correctCount.setText("Your Score: " + correctAnswerCount);
-        }
+        Activity currentActivity = getActivity();
+        if(!(currentActivity instanceof GameNavActivity))
+            return;             // TODO: Error handling
+        GameNavActivity mActivity = (GameNavActivity) currentActivity;
+
+        TextView correctCount = (TextView) view.findViewById(R.id.ScoreScore);
+        correctCount.setText("Your Score: " + mActivity.mCurrentScore);
     }
 }

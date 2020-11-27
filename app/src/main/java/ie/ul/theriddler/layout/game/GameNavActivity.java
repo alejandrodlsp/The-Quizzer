@@ -11,11 +11,14 @@ import ie.ul.theriddler.layout.hub.MainHubActivity;
 public class GameNavActivity extends AppCompatActivity {
 
     private int mCategoryIndex;
+    public int mCurrentScore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_nav);
+
+        mCurrentScore = 0;
 
         mCategoryIndex = getIntent().getIntExtra("CATEGORY_INDEX", 0);
     }
@@ -30,5 +33,4 @@ public class GameNavActivity extends AppCompatActivity {
         Intent toNewActivity = new Intent(this, MainHubActivity.class);
         startActivity(toNewActivity);
     }
-
 }
