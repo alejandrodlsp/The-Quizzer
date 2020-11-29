@@ -40,8 +40,13 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
                 android:layout_marginTop="0dp"
+                android:background="#2D4159"
                 android:drawableLeft="@drawable/ic_all_questions"
-                android:text="All Questions" />
+                android:fontFamily="@font/antic_slab"
+                android:text="All Questions"
+                android:textAlignment="center"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp" />
 
             <Button
                 android:id="@+id/general_knowledge_button"
@@ -49,8 +54,13 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
                 android:layout_marginTop="0dp"
+                android:background="#2D4159"
                 android:drawableLeft="@drawable/ic_general_knowledge"
-                android:text="General Knowledge" />
+                android:fontFamily="@font/antic_slab"
+                android:text="General Knowledge"
+                android:textAlignment="center"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp" />
 
             <Button
                 android:id="@+id/sports_button"
@@ -58,8 +68,13 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
                 android:layout_marginTop="0dp"
+                android:background="#2D4159"
                 android:drawableLeft="@drawable/ic_sports"
-                android:text="Sports" />
+                android:fontFamily="@font/antic_slab"
+                android:text="Sports"
+                android:textAlignment="center"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp" />
 
             <Button
                 android:id="@+id/computers_button"
@@ -67,33 +82,52 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
                 android:layout_marginTop="0dp"
+                android:background="#2D4159"
                 android:drawableLeft="@drawable/ic_computers"
-                android:text="Computers" />
+                android:fontFamily="@font/antic_slab"
+                android:text="Computers"
+                android:textAlignment="center"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp" />
 
             <Button
                 android:id="@+id/video_games_button"
                 android:layout_width="373dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
+                android:background="#2D4159"
                 android:drawableLeft="@drawable/ic_video_games"
-                android:text="Video Games" />
+                android:fontFamily="@font/antic_slab"
+                android:text="Video Games"
+                android:textAlignment="center"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp" />
 
             <Button
                 android:id="@+id/animals_button"
                 android:layout_width="373dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
-                android:backgroundTint="#D8D7D7"
+                android:background="#2D4159"
                 android:drawableLeft="@drawable/ic_animals"
-                android:text="Animals" />
+                android:fontFamily="@font/antic_slab"
+                android:text="Animals"
+                android:textAlignment="center"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp" />
 
             <Button
                 android:id="@+id/tv_button"
                 android:layout_width="373dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
+                android:background="#2D4159"
                 android:drawableLeft="@drawable/ic_tv"
-                android:text="Telivison" />
+                android:fontFamily="@font/antic_slab"
+                android:text="Telivison"
+                android:textAlignment="center"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp" />
 
             <Button
                 android:id="@+id/movies_button"
@@ -101,48 +135,78 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
                 android:layout_marginTop="0dp"
+                android:background="#2D4159"
                 android:drawableLeft="@drawable/ic_movies"
-                android:text="Movies" />
+                android:fontFamily="@font/antic_slab"
+                android:text="Movies"
+                android:textAlignment="center"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp" />
 
             <Button
                 android:id="@+id/music_button"
                 android:layout_width="373dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
+                android:background="#2D4159"
                 android:drawableLeft="@drawable/ic_music"
-                android:text="Music" />
+                android:fontFamily="@font/antic_slab"
+                android:text="Music"
+                android:textAlignment="center"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp" />
 
             <Button
                 android:id="@+id/nature_button"
                 android:layout_width="373dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
+                android:background="#2D4159"
                 android:drawableLeft="@drawable/ic_nature"
-                android:text="Nature" />
+                android:fontFamily="@font/antic_slab"
+                android:text="Nature"
+                android:textAlignment="center"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp" />
 
             <Button
                 android:id="@+id/geography_button"
                 android:layout_width="373dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
+                android:background="#2D4159"
                 android:drawableLeft="@drawable/ic_geography"
-                android:text="Geography" />
+                android:fontFamily="@font/antic_slab"
+                android:text="Geography"
+                android:textAlignment="center"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp" />
 
             <Button
                 android:id="@+id/vehicles_button"
                 android:layout_width="373dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
+                android:background="#2D4159"
                 android:drawableLeft="@drawable/ic_vehicles"
-                android:text="Vehicles" />
+                android:fontFamily="@font/antic_slab"
+                android:text="Vehicles"
+                android:textAlignment="center"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp" />
 
             <Button
                 android:id="@+id/art_button"
                 android:layout_width="373dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
+                android:background="#2D4159"
                 android:drawableLeft="@drawable/ic_art"
-                android:text="Art" />
+                android:fontFamily="@font/antic_slab"
+                android:text="Art"
+                android:textAlignment="center"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp" />
 
             <Button
                 android:id="@+id/history_button"
@@ -150,8 +214,13 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
                 android:layout_marginTop="0dp"
+                android:background="#2D4159"
                 android:drawableLeft="@drawable/ic_history"
-                android:text="History" />
+                android:fontFamily="@font/antic_slab"
+                android:text="History"
+                android:textAlignment="center"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp" />
 
         </LinearLayout>
     </ScrollView>

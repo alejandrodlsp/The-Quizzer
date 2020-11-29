@@ -6,24 +6,73 @@
     android:layout_height="match_parent"
     tools:context=".layout.game.ScoreFragment" >
 
-    <TextView
-        android:id="@+id/ScoreScore"
-        android:layout_width="134dp"
-        android:layout_height="82dp"
-        android:layout_marginTop="216dp"
-        android:text="Your score: 0"
-        android:textAlignment="center"
-        android:textSize="25sp"
+    <View
+        android:id="@+id/view6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/scorebackground"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/ScoreGoBack"
+    <TextView
+        android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Go Back"
-        tools:layout_editor_absoluteX="165dp"
-        tools:layout_editor_absoluteY="573dp" />
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/antic_slab"
+        android:text="FINAL SCORE"
+        android:textColor="#FFFFFF"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/ScoreScore"
+        android:layout_width="187dp"
+        android:layout_height="274dp"
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/antic_slab"
+        android:text="Your score: 0"
+        android:textAlignment="center"
+        android:textColor="#22293D"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/view6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.513"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.765" />
+
+    <Button
+        android:id="@+id/ScoreGoBack"
+        android:layout_width="48dp"
+        android:layout_height="40dp"
+        android:background="@drawable/returnicon"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.774"
+        app:layout_constraintStart_toEndOf="@+id/textView4"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.034" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/antic_slab"
+        android:text="Congratulations!"
+        android:textAlignment="center"
+        android:textColor="#22293D"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.333" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
