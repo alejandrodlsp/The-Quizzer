@@ -14,7 +14,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 import ie.ul.theriddler.R;
+import ie.ul.theriddler.database.DatabaseHandler;
 import ie.ul.theriddler.layout.hub.HighScoresActivity;
 import ie.ul.theriddler.layout.hub.MainHubActivity;
 
@@ -57,12 +60,34 @@ public class ScoreFragment extends Fragment {
             }
         });
 
+        /* Gets current GameNav activity */
         Activity currentActivity = getActivity();
         if(!(currentActivity instanceof GameNavActivity))
             return;             // TODO: Error handling
         GameNavActivity mActivity = (GameNavActivity) currentActivity;
 
         TextView correctCount = (TextView) view.findViewById(R.id.ScoreScore);
-        correctCount.setText("Your Score: " + mActivity.mCurrentScore);
+        String scoreText = "Your Score: " + mActivity.mCurrentScore;
+
+        // Check if user is logged in
+        if(FirebaseAuth.getInstance().getCurrentUser().getUid() != null)
+        {
+            int highscore = DatabaseHandler.GetInstance().GetCategoryHighscore(mActivity.GetCategory());
+            if(mActivity.mCurrentScore > highscore)
+            {
+                scoreText += "\nNew! High-score: ";
+                scoreText += mActivity.mCurrentScore;
+
+                // Set highscore
+                DatabaseHandler.GetInstance().SetCategoryHighscore(mActivity.GetCategory(), mActivity.mCurrentScore);
+            }
+            else
+            {
+                scoreText += "\nYour High-score: ";
+                scoreText += DatabaseHandler.GetInstance().GetCategoryHighscore(mActivity.GetCategory());
+            }
+        }
+
+        correctCount.setText(scoreText);
     }
 }

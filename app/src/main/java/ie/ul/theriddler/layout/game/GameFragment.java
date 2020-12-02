@@ -17,11 +17,13 @@ import android.widget.TextView;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 import java.util.Random;
 
 import ie.ul.theriddler.R;
+import ie.ul.theriddler.database.DatabaseHandler;
 import ie.ul.theriddler.questions.IOnAPIQueryCallback;
 import ie.ul.theriddler.questions.Question;
 import ie.ul.theriddler.questions.QuestionHandler;
@@ -32,7 +34,7 @@ import ie.ul.theriddler.questions.QuestionHandler;
 public class GameFragment extends Fragment implements IOnAPIQueryCallback {
 
     private QuestionHandler mQuestionHandler;           // Instance of a QuestionHandler object
-    
+
     private CountDownTimer mCountdownTimer;             // Instance of the current countdown timer; null if no timer is active
     private final long kMaxTimeMilliseconds = 6000;     // Starting value of timer in milliseconds
     private long mTimeLeftMilliseconds = 0;             // Current timer value in milliseconds
@@ -199,6 +201,13 @@ public class GameFragment extends Fragment implements IOnAPIQueryCallback {
     {
         mCurrentQuestion = null;
         mCorrectAnswerCount ++;
+
+        // If user is logged in
+        if(FirebaseAuth.getInstance().getCurrentUser().getUid() != null)
+        {
+            // Increment total answered questions
+            DatabaseHandler.GetInstance().IncrementTotalAnsweredQuestions();
+        }
         mQuestionHandler.QueryAPI(mCurrentCategory, Question.Difficulty.MEDIUM, 1);
     }
 

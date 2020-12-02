@@ -39,7 +39,8 @@ public class DatabaseHandler {
     // User ID
     String mUserID;
 
-    private int mUserTotalQuestions;
+    private int mUserScore;
+    private int mTotalRanking;
     private ArrayList<CategoryScore> mCategoryScores;
 
     /**
@@ -65,6 +66,7 @@ public class DatabaseHandler {
      */
     private void InitializeCategoriesDatabase(String uid)
     {
+        // Add event listener for when a category highscore changes
         mCategoryScores = new ArrayList<CategoryScore>();
         for(final Question.Category category : Question.Category.values())
         {
@@ -95,18 +97,47 @@ public class DatabaseHandler {
      */
     private void InitializeUserDatabase(String uid)
     {
-        mUserTotalQuestions = 0;
+        mUserScore = 0;
+
+        // Add event listener for when user updates its score
         DatabaseReference dbr = mUsersDatabase.child(uid);
         dbr.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 int answeredQuestions = snapshot.getValue(int.class);
-                mUserTotalQuestions = answeredQuestions;
+                mUserScore = answeredQuestions;
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 Log.w("DB","Failed to read DB value for category.", error.toException());
+            }
+        });
+
+        // Add event listener for when any user in the database updates its score
+        mUsersDatabase.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                // Keep track of total ranking (starts at first by default)
+                int totalRanking = 1;
+                // Get current score
+                int totalScore = GetTotalAnsweredQuestions();
+
+                // For every user in the DB
+                for(DataSnapshot snp : snapshot.getChildren())
+                {
+                    // Get score of user
+                    int userScore = snp.getValue(int.class);
+                    // If user's score is greater than our score, update totalRanking
+                    if(userScore > totalScore) totalRanking ++;
+                }
+
+                // Save total ranking
+                mTotalRanking = totalRanking;
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
             }
         });
     }
@@ -116,7 +147,7 @@ public class DatabaseHandler {
      */
     public int GetTotalAnsweredQuestions()
     {
-        return mUserTotalQuestions;
+        return mUserScore;
     }
 
     /**
@@ -124,8 +155,8 @@ public class DatabaseHandler {
      */
     public void IncrementTotalAnsweredQuestions()
     {
-        mUserTotalQuestions ++;
-        mUsersDatabase.child(mUserID).setValue(mUserTotalQuestions);
+        mUserScore++;
+        mUsersDatabase.child(mUserID).setValue(mUserScore);
     }
 
     /**
@@ -164,6 +195,14 @@ public class DatabaseHandler {
         {
             SetCategoryHighscore(category, score);
         }
+    }
+
+    /**
+     * @return total ranking based on answered question score
+     */
+    public int GetTotalRanking()
+    {
+        return mTotalRanking;
     }
 
 }
