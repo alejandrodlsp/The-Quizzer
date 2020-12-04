@@ -52,10 +52,12 @@ public class DatabaseHandler {
             Log.w("AUTH", "Could not generate database handler, user is not authenticated");
 
         mDatabase = FirebaseDatabase.getInstance();
-        mCategoriesDatabase = mDatabase.getReference("categories");
-        mUsersDatabase = mDatabase.getReference("users");
+        mCategoriesDatabase = mDatabase.getReference().child("categories");
+        mUsersDatabase = mDatabase.getReference().child("users");
 
         mUserID =  FirebaseAuth.getInstance().getCurrentUser().getUid();
+        mUsersDatabase.child(mUserID).setValue("TEST123");
+
         InitializeCategoriesDatabase(mUserID);
         InitializeUserDatabase(mUserID);
     }
