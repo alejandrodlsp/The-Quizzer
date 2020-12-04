@@ -19,13 +19,20 @@ import ie.ul.theriddler.questions.IOnAPIQueryCallback;
 import ie.ul.theriddler.questions.Question;
 import ie.ul.theriddler.questions.QuestionHandler;
 
+/**
+ * Main activity
+ */
 public class MainActivity extends AppCompatActivity  {
 
+    /**
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // Login button callback
         Button loginButton = (Button) findViewById(R.id.loginButton);
         loginButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -33,6 +40,7 @@ public class MainActivity extends AppCompatActivity  {
             }
         });
 
+        // Guest button callback
         Button guestButton = (Button) findViewById(R.id.guestButton);
         guestButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {

@@ -10,14 +10,23 @@ import android.widget.Button;
 import ie.ul.theriddler.R;
 import ie.ul.theriddler.layout.game.GameNavActivity;
 
+/**
+ *
+ */
 public class MainHubActivity extends AppCompatActivity {
-    
+
+    /**
+     * OnCreate override
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_hub);
 
-        final Button high_score_button = (Button) findViewById(R.id.high_score_button);
+        /* Go trough all buttons and add OnClick event listeners */
+
+        Button high_score_button = (Button) findViewById(R.id.high_score_button);
         high_score_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -80,7 +89,7 @@ public class MainHubActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent toNewActivity = new Intent(MainHubActivity.this, GameNavActivity.class);
-                toNewActivity.putExtra("CATEGORY_INDEX", 14);
+                toNewActivity.putExtra("CATEGORY_INDEX", 15);
                 startActivity(toNewActivity);
             }
         });
