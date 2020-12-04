@@ -76,6 +76,8 @@ public class DatabaseHandler {
             dbr.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    if(snapshot.getValue() == null) return;
+
                     String scoreStr = snapshot.getValue().toString();
                     int score = Integer.parseInt(scoreStr);
                     for(CategoryScore sc : mCategoryScores)
