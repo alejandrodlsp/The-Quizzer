@@ -87,7 +87,7 @@ public class ScoreFragment extends Fragment {
             else
             {
                 scoreText += "\nYour High-score: ";
-                scoreText += DatabaseHandler.GetInstance().GetCategoryHighscore(mActivity.GetCategory());
+                scoreText += highscore;
             }
         }
 

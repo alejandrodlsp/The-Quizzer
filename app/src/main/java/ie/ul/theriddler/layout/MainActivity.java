@@ -13,6 +13,7 @@ import com.android.volley.toolbox.Volley;
 import java.util.ArrayList;
 
 import ie.ul.theriddler.R;
+import ie.ul.theriddler.SoundPlayer;
 import ie.ul.theriddler.layout.hub.MainHubActivity;
 import ie.ul.theriddler.layout.login.LoginRegisterActivity;
 import ie.ul.theriddler.questions.IOnAPIQueryCallback;
@@ -32,11 +33,14 @@ public class MainActivity extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        SoundPlayer player = new SoundPlayer(this);
+
         // Login button callback
         Button loginButton = (Button) findViewById(R.id.loginButton);
         loginButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, LoginRegisterActivity.class));
+                player.PlayClickSound();
             }
         });
 
@@ -45,6 +49,7 @@ public class MainActivity extends AppCompatActivity  {
         guestButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 startActivity(new Intent (MainActivity.this, MainHubActivity.class));
+                player.PlayClickSound();
             }
         });
     }
