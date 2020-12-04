@@ -105,7 +105,7 @@ public class DatabaseHandler {
         dbr.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                String answeredQuestionsSt = snapshot.getValue(String.class);
+                String answeredQuestionsSt = snapshot.getValue().toString();
                 mUserScore = Integer.parseInt(answeredQuestionsSt);
             }
 
