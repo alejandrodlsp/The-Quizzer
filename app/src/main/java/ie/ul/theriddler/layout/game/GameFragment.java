@@ -191,7 +191,7 @@ public class GameFragment extends Fragment implements IOnAPIQueryCallback {
     void OnAnswerClicked(int index)
     {
         if(mCurrentQuestion == null) return;
-        if(mCountdownTimer != null) mCountdownTimer.cancel();
+        if(mCountdownTimer != null && !mActivity.IsTriviathon()) mCountdownTimer.cancel();
         if(index == mCorrectIndex) OnCorrectAnswer();
         else OnInCorrectAnswer();
 
@@ -229,6 +229,9 @@ public class GameFragment extends Fragment implements IOnAPIQueryCallback {
      */
     void EndGame()
     {
+        if(mCountdownTimer != null){
+            mCountdownTimer.cancel();
+        }
         mActivity.mCurrentScore = mCorrectAnswerCount;
         Navigation.findNavController(getView()).navigate(R.id.action_gameFragment_to_scoreFragment);
     }
