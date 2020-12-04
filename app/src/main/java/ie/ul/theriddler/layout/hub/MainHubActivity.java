@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Switch;
 
 import ie.ul.theriddler.R;
 import ie.ul.theriddler.layout.game.GameNavActivity;
@@ -24,6 +25,9 @@ public class MainHubActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_hub);
 
+        Switch triviathon_switch = (Switch) findViewById(R.id.TriviathonSwitch);
+        boolean isTriviathon = triviathon_switch.isChecked();
+
         /* Go trough all buttons and add OnClick event listeners */
 
         Button high_score_button = (Button) findViewById(R.id.high_score_button);
@@ -40,6 +44,7 @@ public class MainHubActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent toNewActivity = new Intent(MainHubActivity.this, GameNavActivity.class);
                 toNewActivity.putExtra("CATEGORY_INDEX", 0);
+                toNewActivity.putExtra("IS_TRIVIATHON", isTriviathon);
                 startActivity(toNewActivity);
             }
         });
@@ -50,6 +55,7 @@ public class MainHubActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent toNewActivity = new Intent(MainHubActivity.this, GameNavActivity.class);
                 toNewActivity.putExtra("CATEGORY_INDEX", 9);
+                toNewActivity.putExtra("IS_TRIVIATHON", isTriviathon);
                 startActivity(toNewActivity);
             }
         });
@@ -60,6 +66,7 @@ public class MainHubActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent toNewActivity = new Intent(MainHubActivity.this, GameNavActivity.class);
                 toNewActivity.putExtra("CATEGORY_INDEX", 11);
+                toNewActivity.putExtra("IS_TRIVIATHON", isTriviathon);
                 startActivity(toNewActivity);
             }
         });
@@ -70,6 +77,7 @@ public class MainHubActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent toNewActivity = new Intent(MainHubActivity.this, GameNavActivity.class);
                 toNewActivity.putExtra("CATEGORY_INDEX", 12);
+                toNewActivity.putExtra("IS_TRIVIATHON", isTriviathon);
                 startActivity(toNewActivity);
             }
         });
@@ -80,6 +88,7 @@ public class MainHubActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent toNewActivity = new Intent(MainHubActivity.this, GameNavActivity.class);
                 toNewActivity.putExtra("CATEGORY_INDEX", 14);
+                toNewActivity.putExtra("IS_TRIVIATHON", isTriviathon);
                 startActivity(toNewActivity);
             }
         });
@@ -90,6 +99,7 @@ public class MainHubActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent toNewActivity = new Intent(MainHubActivity.this, GameNavActivity.class);
                 toNewActivity.putExtra("CATEGORY_INDEX", 15);
+                toNewActivity.putExtra("IS_TRIVIATHON", isTriviathon);
                 startActivity(toNewActivity);
             }
         });
@@ -100,6 +110,7 @@ public class MainHubActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent toNewActivity = new Intent(MainHubActivity.this, GameNavActivity.class);
                 toNewActivity.putExtra("CATEGORY_INDEX", 18);
+                toNewActivity.putExtra("IS_TRIVIATHON", isTriviathon);
                 startActivity(toNewActivity);
             }
         });
@@ -110,6 +121,7 @@ public class MainHubActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent toNewActivity = new Intent(MainHubActivity.this, GameNavActivity.class);
                 toNewActivity.putExtra("CATEGORY_INDEX", 21);
+                toNewActivity.putExtra("IS_TRIVIATHON", isTriviathon);
                 startActivity(toNewActivity);
             }
         });
@@ -120,6 +132,7 @@ public class MainHubActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent toNewActivity = new Intent(MainHubActivity.this, GameNavActivity.class);
                 toNewActivity.putExtra("CATEGORY_INDEX", 22);
+                toNewActivity.putExtra("IS_TRIVIATHON", isTriviathon);
                 startActivity(toNewActivity);
             }
         });
@@ -130,6 +143,7 @@ public class MainHubActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent toNewActivity = new Intent(MainHubActivity.this, GameNavActivity.class);
                 toNewActivity.putExtra("CATEGORY_INDEX", 23);
+                toNewActivity.putExtra("IS_TRIVIATHON", isTriviathon);
                 startActivity(toNewActivity);
             }
         });
@@ -140,6 +154,7 @@ public class MainHubActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent toNewActivity = new Intent(MainHubActivity.this, GameNavActivity.class);
                 toNewActivity.putExtra("CATEGORY_INDEX", 25);
+                toNewActivity.putExtra("IS_TRIVIATHON", isTriviathon);
                 startActivity(toNewActivity);
             }
         });
@@ -150,6 +165,7 @@ public class MainHubActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent toNewActivity = new Intent(MainHubActivity.this, GameNavActivity.class);
                 toNewActivity.putExtra("CATEGORY_INDEX", 27);
+                toNewActivity.putExtra("IS_TRIVIATHON", isTriviathon);
                 startActivity(toNewActivity);
             }
         });
@@ -160,6 +176,7 @@ public class MainHubActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent toNewActivity = new Intent(MainHubActivity.this, GameNavActivity.class);
                 toNewActivity.putExtra("CATEGORY_INDEX", 28);
+                toNewActivity.putExtra("IS_TRIVIATHON", isTriviathon);
                 startActivity(toNewActivity);
             }
         });

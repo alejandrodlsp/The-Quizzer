@@ -16,6 +16,7 @@ public class GameNavActivity extends AppCompatActivity {
 
     private Question.Category mCategory;        // Current category
     private int mCategoryIndex;                 // Current category index
+    private boolean mIsTriviathon;              // Is triviathon gamemode
     public int mCurrentScore;                   // Current user score
 
     /**
@@ -31,6 +32,7 @@ public class GameNavActivity extends AppCompatActivity {
         mCurrentScore = 0;
 
         mCategoryIndex = getIntent().getIntExtra("CATEGORY_INDEX", 0);
+        mIsTriviathon = getIntent().getBooleanExtra("IS_TRIVIATHON", false);
         mCategory = Question.Category.valueOf(mCategoryIndex);
     }
 
@@ -49,6 +51,11 @@ public class GameNavActivity extends AppCompatActivity {
     {
         return mCategory;
     }
+
+    /**
+     * @return True if triviathon mode is selected, false otherwise
+     */
+    public boolean IsTriviathon() { return mIsTriviathon; }
 
     /**
      * Navigates to main hub menu

@@ -38,16 +38,18 @@ public class GameFragment extends Fragment implements IOnAPIQueryCallback {
 
     private CountDownTimer mCountdownTimer;             // Instance of the current countdown timer; null if no timer is active
     private final long kMaxTimeMilliseconds = 15000;    // Starting value of timer in milliseconds
+    private final long kMaxTimeMillisecondsTriviathon = 60000;  // Starting value of timer in milliseconds for triviathon gamemode
     private long mTimeLeftMilliseconds = 0;             // Current timer value in milliseconds
 
     private Question mCurrentQuestion;                  // Current active question; null if no question is active (waiting for API callback)
     private int mCorrectIndex;                          // Index of the correct answer for current question
     private Question.Category mCurrentCategory;         // Active category to query questions from
-    private final Question.Difficulty kDifficulty = Question.Difficulty.MEDIUM; // Active difficulty to query questions from
+    private final Question.Difficulty kDifficulty = Question.Difficulty.EASY; // Active difficulty to query questions from
 
     private GameNavActivity mActivity;                           // Parent activity
 
     private int mCorrectAnswerCount;                    // Count of total correct answered questions (Score)
+    private boolean mTriviathonStarted = false;                 // State of triviathon gamemode
 
     /**
      * Required empty public constructor
@@ -160,8 +162,10 @@ public class GameFragment extends Fragment implements IOnAPIQueryCallback {
             }
         }
 
-        /* Starts question countdown timer*/
-        StartTimer();
+        // If is not triviathon or triviathon is not started yet
+        if(!mActivity.IsTriviathon() || !mTriviathonStarted)
+            /* Starts question countdown timer*/
+            StartTimer();
     }
 
     /**
@@ -209,7 +213,7 @@ public class GameFragment extends Fragment implements IOnAPIQueryCallback {
             // Increment total answered questions
             DatabaseHandler.GetInstance().IncrementTotalAnsweredQuestions();
         }
-        mQuestionHandler.QueryAPI(mCurrentCategory, Question.Difficulty.MEDIUM, 1);
+        mQuestionHandler.QueryAPI(mCurrentCategory, kDifficulty, 1);
     }
 
     /**
@@ -234,10 +238,16 @@ public class GameFragment extends Fragment implements IOnAPIQueryCallback {
      */
     void StartTimer()
     {
+        mTriviathonStarted = true;
+
         if(mCountdownTimer != null) mCountdownTimer.cancel();
 
-        mTimeLeftMilliseconds = kMaxTimeMilliseconds;
-        mCountdownTimer = new CountDownTimer(kMaxTimeMilliseconds, 1000) {
+        if(mActivity.IsTriviathon())
+            mTimeLeftMilliseconds = kMaxTimeMillisecondsTriviathon;
+        else
+            mTimeLeftMilliseconds = kMaxTimeMilliseconds;
+
+        mCountdownTimer = new CountDownTimer(mActivity.IsTriviathon() ? kMaxTimeMillisecondsTriviathon : kMaxTimeMilliseconds, 1000) {
             @Override
             public void onTick(long l) {
                 mTimeLeftMilliseconds = l;
