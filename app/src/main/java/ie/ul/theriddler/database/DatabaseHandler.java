@@ -56,7 +56,6 @@ public class DatabaseHandler {
         mUsersDatabase = mDatabase.getReference().child("users");
 
         mUserID =  FirebaseAuth.getInstance().getCurrentUser().getUid();
-        mUsersDatabase.child(mUserID).setValue("TEST123");
 
         InitializeCategoriesDatabase(mUserID);
         InitializeUserDatabase(mUserID);
@@ -106,8 +105,8 @@ public class DatabaseHandler {
         dbr.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                int answeredQuestions = snapshot.getValue(int.class);
-                mUserScore = answeredQuestions;
+                String answeredQuestionsSt = snapshot.getValue(String.class);
+                mUserScore = Integer.parseInt(answeredQuestionsSt);
             }
 
             @Override
