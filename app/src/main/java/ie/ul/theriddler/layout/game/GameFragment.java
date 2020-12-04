@@ -21,6 +21,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.concurrent.TimeUnit;
 
 import ie.ul.theriddler.R;
 import ie.ul.theriddler.database.DatabaseHandler;
@@ -36,7 +37,7 @@ public class GameFragment extends Fragment implements IOnAPIQueryCallback {
     private QuestionHandler mQuestionHandler;           // Instance of a QuestionHandler object
 
     private CountDownTimer mCountdownTimer;             // Instance of the current countdown timer; null if no timer is active
-    private final long kMaxTimeMilliseconds = 6000;     // Starting value of timer in milliseconds
+    private final long kMaxTimeMilliseconds = 15000;    // Starting value of timer in milliseconds
     private long mTimeLeftMilliseconds = 0;             // Current timer value in milliseconds
 
     private Question mCurrentQuestion;                  // Current active question; null if no question is active (waiting for API callback)
@@ -256,7 +257,7 @@ public class GameFragment extends Fragment implements IOnAPIQueryCallback {
     void UpdateTimerText()
     {
         int seconds = (int) mTimeLeftMilliseconds % 60000 / 1000;
-        int millis = (int) mTimeLeftMilliseconds % 1000 / 100;
+        int millis = (int) mTimeLeftMilliseconds - (seconds * 1000);
 
         String timeString = "";
         if(seconds < 10) timeString += "0";
