@@ -131,7 +131,8 @@ public class DatabaseHandler {
                 for(DataSnapshot snp : snapshot.getChildren())
                 {
                     // Get score of user
-                    int userScore = snp.getValue(int.class);
+                    String userScoreStr = snp.getValue().toString();
+                    int userScore = Integer.parseInt(userScoreStr);
                     // If user's score is greater than our score, update totalRanking
                     if(userScore > totalScore) totalRanking ++;
                 }

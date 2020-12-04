@@ -89,6 +89,8 @@ public class ScoreFragment extends Fragment {
                 scoreText += "\nYour High-score: ";
                 scoreText += highscore;
             }
+
+
         }
 
         correctCount.setText(scoreText);

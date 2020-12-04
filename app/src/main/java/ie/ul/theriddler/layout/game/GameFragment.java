@@ -270,13 +270,10 @@ public class GameFragment extends Fragment implements IOnAPIQueryCallback {
     void UpdateTimerText()
     {
         int seconds = (int) mTimeLeftMilliseconds % 60000 / 1000;
-        int millis = (int) mTimeLeftMilliseconds - (seconds * 1000);
 
         String timeString = "";
         if(seconds < 10) timeString += "0";
         timeString += seconds;
-        if(millis < 10) timeString += "0";
-        timeString += millis;
 
         TextView tv = getView().findViewById(R.id.GameTimer);
         tv.setText(timeString);
