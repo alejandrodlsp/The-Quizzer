@@ -11,13 +11,20 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import ie.ul.theriddler.questions.Question;
 
 public class DatabaseHandler {
 
-    /* Singleton instance */
+    /*  List of categories unlocked by default */
+    private final int[] kDefaultUnlockedCategories = { 0, 9, 11, 12, 14 };
+
+    /*  List of unlocked categories (Fetched from DB) */
+    private ArrayList<Integer> mUnlockedCategories = new ArrayList<Integer>();
+
+    /*  Singleton instance */
     private static DatabaseHandler mInstance;
 
     /**
@@ -104,7 +111,7 @@ public class DatabaseHandler {
         mUserScore = 0;
 
         // Add event listener for when user updates its score
-        DatabaseReference dbr = mUsersDatabase.child(uid);
+        DatabaseReference dbr = mUsersDatabase.child(uid).child("score");
         dbr.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -114,7 +121,26 @@ public class DatabaseHandler {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Log.w("DB","Failed to read DB value for category.", error.toException());
+                Log.w("DB","Failed to read DB value for user score.", error.toException());
+            }
+        });
+
+        // Add event listener for when user updates unlocks
+        DatabaseReference dbr2 = mUsersDatabase.child(uid).child("unlocks");
+        dbr.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                mUnlockedCategories.clear();
+                for(DataSnapshot snp : snapshot.getChildren())
+                {
+                    String unlockedCategory = snapshot.getValue().toString();
+                    mUnlockedCategories.add(Integer.parseInt(unlockedCategory));
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Log.w("DB","Failed to read DB value for user unlock.", error.toException());
             }
         });
 
@@ -143,6 +169,7 @@ public class DatabaseHandler {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
+                Log.w("DB","Failed to read DB value for users ranking.", error.toException());
             }
         });
     }
@@ -161,7 +188,7 @@ public class DatabaseHandler {
     public void IncrementTotalAnsweredQuestions()
     {
         mUserScore++;
-        mUsersDatabase.child(mUserID).setValue(mUserScore);
+        mUsersDatabase.child(mUserID).child("score").setValue(mUserScore);
     }
 
     /**
@@ -208,6 +235,31 @@ public class DatabaseHandler {
     public int GetTotalRanking()
     {
         return mTotalRanking;
+    }
+
+
+    /**
+     * @param CategoryIndex
+     * @return true if category is unlocked, false otherwise
+     */
+    public boolean IsCategoryUnlocked(int CategoryIndex)
+    {
+        for(int i = 0; i < kDefaultUnlockedCategories.length; i++) {
+            if (CategoryIndex == kDefaultUnlockedCategories[i]) return true;
+        }
+        for (int i: mUnlockedCategories) {
+            if (CategoryIndex == i) return true;
+        }
+        return false;
+    }
+
+    /**
+     * @param CategoryIndex Category index to unlock
+     */
+    public void UnlockCategory(int CategoryIndex)
+    {
+        DatabaseReference dbr2 = mUsersDatabase.child(mUserID).child("unlocks").child(Integer.toString(CategoryIndex));
+        dbr2.setValue(CategoryIndex);
     }
 
 }
