@@ -108,8 +108,11 @@ public class DatabaseHandler {
         dbr.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                String answeredQuestionsSt = snapshot.getValue().toString();
-                mUserScore = Integer.parseInt(answeredQuestionsSt);
+                if(snapshot.getValue() != null)
+                {
+                    String answeredQuestionsSt = snapshot.getValue().toString();
+                    mUserScore = Integer.parseInt(answeredQuestionsSt);
+                }
             }
 
             @Override
@@ -130,11 +133,13 @@ public class DatabaseHandler {
                 // For every user in the DB
                 for(DataSnapshot snp : snapshot.getChildren())
                 {
-                    // Get score of user
-                    String userScoreStr = snp.getValue().toString();
-                    int userScore = Integer.parseInt(userScoreStr);
-                    // If user's score is greater than our score, update totalRanking
-                    if(userScore > totalScore) totalRanking ++;
+                    if(snapshot.getValue() != null) {
+                        // Get score of user
+                        String userScoreStr = snp.getValue().toString();
+                        int userScore = Integer.parseInt(userScoreStr);
+                        // If user's score is greater than our score, update totalRanking
+                        if (userScore > totalScore) totalRanking++;
+                    }
                 }
 
                 // Save total ranking
