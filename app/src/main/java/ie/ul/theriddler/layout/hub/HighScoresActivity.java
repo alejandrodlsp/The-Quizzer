@@ -21,13 +21,12 @@ public class HighScoresActivity extends AppCompatActivity {
      * OnCreate Override
      * @param savedInstanceState
      */
-
-    TextView highscoresScores = (TextView) findViewById(R.id.highscoresScores);
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_high_scores);
+
+        TextView highscoresScores = (TextView) findViewById(R.id.highscoresScores);
 
         // Add event listener to main hub button
         Button main_hub_button = (Button) findViewById(R.id.main_hub_button);
