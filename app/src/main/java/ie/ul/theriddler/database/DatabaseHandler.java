@@ -73,6 +73,25 @@ public class DatabaseHandler {
         {
             mCategoryScores.add(new CategoryScore(category, 0));
             DatabaseReference dbr = mCategoriesDatabase.child(category.toString()).child(uid);
+            dbr.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    if(snapshot.getValue() == null) return;
+
+                    String scoreStr = snapshot.getValue().toString();
+                    int score = Integer.parseInt(scoreStr);
+                    for(CategoryScore sc : mCategoryScores)
+                    {
+                        if(sc.mCategory == category)
+                            sc.mScore = score;
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                    Log.w("DB","Failed to read DB value for category.", error.toException());
+                }
+            });
             dbr.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
