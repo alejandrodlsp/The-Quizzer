@@ -43,44 +43,9 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/science_textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="35dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="35dp"
-        android:fontFamily="@font/antic_slab"
-        android:text="Science: 30 points!"
-        android:textAlignment="center"
-        android:textColor="#22293D"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/general_knowledge_textView" />
-
-    <TextView
-        android:id="@+id/music_textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="35dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="35dp"
-        android:fontFamily="@font/antic_slab"
-        android:text="Music: 40 points!"
-        android:textAlignment="center"
-        android:textColor="#22293D"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/computers_textView" />
-
-    <TextView
-        android:id="@+id/general_knowledge_textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/HighScoreScores"
+        android:layout_width="249dp"
+        android:layout_height="229dp"
         android:layout_marginStart="35dp"
         android:layout_marginTop="280dp"
         android:layout_marginEnd="35dp"
@@ -96,24 +61,6 @@
         app:layout_constraintTop_toBottomOf="@+id/main_hub_button" />
 
     <TextView
-        android:id="@+id/computers_textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="35dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="35dp"
-        android:fontFamily="@font/antic_slab"
-        android:text="Computers: 100 points!"
-        android:textAlignment="center"
-        android:textColor="#22293D"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/science_textView" />
-
-    <TextView
         android:id="@+id/ranking_texView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -127,8 +74,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/music_textView"
-        app:layout_constraintVertical_bias="0.686" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -21,6 +21,9 @@ import ie.ul.theriddler.database.DatabaseHandler;
 import ie.ul.theriddler.layout.hub.HighScoresActivity;
 import ie.ul.theriddler.layout.hub.MainHubActivity;
 
+/**
+ *
+ */
 public class ScoreFragment extends Fragment {
 
     /**
@@ -84,8 +87,10 @@ public class ScoreFragment extends Fragment {
             else
             {
                 scoreText += "\nYour High-score: ";
-                scoreText += DatabaseHandler.GetInstance().GetCategoryHighscore(mActivity.GetCategory());
+                scoreText += highscore;
             }
+
+
         }
 
         correctCount.setText(scoreText);

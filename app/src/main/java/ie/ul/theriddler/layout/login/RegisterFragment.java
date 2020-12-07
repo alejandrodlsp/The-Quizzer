@@ -72,6 +72,9 @@ public class RegisterFragment extends Fragment {
         return fragment;
     }
 
+    /**
+     * @param savedInstanceState
+     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -81,6 +84,12 @@ public class RegisterFragment extends Fragment {
         }
     }
 
+    /**
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -88,6 +97,10 @@ public class RegisterFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_register, container, false);
     }
 
+    /**
+     * @param view
+     * @param savedInstanceState
+     */
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -113,6 +126,10 @@ public class RegisterFragment extends Fragment {
         });
     }
 
+    /**
+     * Validates a name
+     * @return true if name is valid, false otherwise
+     */
     private Boolean validateName() {
         String checker = mName.getText().toString();
 
@@ -124,6 +141,11 @@ public class RegisterFragment extends Fragment {
             return true;
         }
     }
+
+    /**
+     * Validates an email using regex rules
+     * @return true if email is valid, false otherwise
+     */
     private Boolean validateEmail() {
         String checker = mEmail.getText().toString();
         String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
@@ -140,6 +162,10 @@ public class RegisterFragment extends Fragment {
         }
     }
 
+    /**
+     * Validates a password using regex rules
+     * @return true if password is valid, false otherwise
+     */
     private  Boolean validatePassword() {
         String checker = mPassword.getText().toString();
         String passwordValues = "^" +
@@ -158,6 +184,9 @@ public class RegisterFragment extends Fragment {
         }
     }
 
+    /**
+     * Tries to create an account using firebase auth
+     */
     public void createAccount() {
         fAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override

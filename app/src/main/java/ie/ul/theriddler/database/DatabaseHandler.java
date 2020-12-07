@@ -52,10 +52,11 @@ public class DatabaseHandler {
             Log.w("AUTH", "Could not generate database handler, user is not authenticated");
 
         mDatabase = FirebaseDatabase.getInstance();
-        mCategoriesDatabase = mDatabase.getReference("categories");
-        mUsersDatabase = mDatabase.getReference("users");
+        mCategoriesDatabase = mDatabase.getReference().child("categories");
+        mUsersDatabase = mDatabase.getReference().child("users");
 
         mUserID =  FirebaseAuth.getInstance().getCurrentUser().getUid();
+
         InitializeCategoriesDatabase(mUserID);
         InitializeUserDatabase(mUserID);
     }
@@ -75,7 +76,10 @@ public class DatabaseHandler {
             dbr.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    int score = snapshot.getValue(int.class);
+                    if(snapshot.getValue() == null) return;
+
+                    String scoreStr = snapshot.getValue().toString();
+                    int score = Integer.parseInt(scoreStr);
                     for(CategoryScore sc : mCategoryScores)
                     {
                         if(sc.mCategory == category)
@@ -104,8 +108,8 @@ public class DatabaseHandler {
         dbr.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                int answeredQuestions = snapshot.getValue(int.class);
-                mUserScore = answeredQuestions;
+                String answeredQuestionsSt = snapshot.getValue().toString();
+                mUserScore = Integer.parseInt(answeredQuestionsSt);
             }
 
             @Override
@@ -127,7 +131,8 @@ public class DatabaseHandler {
                 for(DataSnapshot snp : snapshot.getChildren())
                 {
                     // Get score of user
-                    int userScore = snp.getValue(int.class);
+                    String userScoreStr = snp.getValue().toString();
+                    int userScore = Integer.parseInt(userScoreStr);
                     // If user's score is greater than our score, update totalRanking
                     if(userScore > totalScore) totalRanking ++;
                 }

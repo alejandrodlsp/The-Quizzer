@@ -6,8 +6,14 @@ import android.os.Bundle;
 
 import ie.ul.theriddler.R;
 
+/**
+ *
+ */
 public class LoginRegisterActivity extends AppCompatActivity {
 
+    /**
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

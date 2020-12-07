@@ -6,18 +6,30 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Switch;
 
 import ie.ul.theriddler.R;
 import ie.ul.theriddler.layout.game.GameNavActivity;
 
+/**
+ *
+ */
 public class MainHubActivity extends AppCompatActivity {
-    
+
+    /**
+     * OnCreate override
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_hub);
 
-        final Button high_score_button = (Button) findViewById(R.id.high_score_button);
+
+
+        /* Go trough all buttons and add OnClick event listeners */
+
+        Button high_score_button = (Button) findViewById(R.id.high_score_button);
         high_score_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -29,8 +41,11 @@ public class MainHubActivity extends AppCompatActivity {
         all_questions_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Switch triviathon_switch = (Switch) findViewById(R.id.TriviathonSwitch);
+                boolean isTriviathon = triviathon_switch.isChecked();
                 Intent toNewActivity = new Intent(MainHubActivity.this, GameNavActivity.class);
                 toNewActivity.putExtra("CATEGORY_INDEX", 0);
+                toNewActivity.putExtra("IS_TRIVIATHON", isTriviathon);
                 startActivity(toNewActivity);
             }
         });
@@ -39,8 +54,11 @@ public class MainHubActivity extends AppCompatActivity {
         general_knowledge_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Switch triviathon_switch = (Switch) findViewById(R.id.TriviathonSwitch);
+                boolean isTriviathon = triviathon_switch.isChecked();
                 Intent toNewActivity = new Intent(MainHubActivity.this, GameNavActivity.class);
                 toNewActivity.putExtra("CATEGORY_INDEX", 9);
+                toNewActivity.putExtra("IS_TRIVIATHON", isTriviathon);
                 startActivity(toNewActivity);
             }
         });
@@ -49,8 +67,11 @@ public class MainHubActivity extends AppCompatActivity {
         movies_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Switch triviathon_switch = (Switch) findViewById(R.id.TriviathonSwitch);
+                boolean isTriviathon = triviathon_switch.isChecked();
                 Intent toNewActivity = new Intent(MainHubActivity.this, GameNavActivity.class);
                 toNewActivity.putExtra("CATEGORY_INDEX", 11);
+                toNewActivity.putExtra("IS_TRIVIATHON", isTriviathon);
                 startActivity(toNewActivity);
             }
         });
@@ -59,8 +80,11 @@ public class MainHubActivity extends AppCompatActivity {
         music_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Switch triviathon_switch = (Switch) findViewById(R.id.TriviathonSwitch);
+                boolean isTriviathon = triviathon_switch.isChecked();
                 Intent toNewActivity = new Intent(MainHubActivity.this, GameNavActivity.class);
                 toNewActivity.putExtra("CATEGORY_INDEX", 12);
+                toNewActivity.putExtra("IS_TRIVIATHON", isTriviathon);
                 startActivity(toNewActivity);
             }
         });
@@ -69,8 +93,11 @@ public class MainHubActivity extends AppCompatActivity {
         tv_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Switch triviathon_switch = (Switch) findViewById(R.id.TriviathonSwitch);
+                boolean isTriviathon = triviathon_switch.isChecked();
                 Intent toNewActivity = new Intent(MainHubActivity.this, GameNavActivity.class);
                 toNewActivity.putExtra("CATEGORY_INDEX", 14);
+                toNewActivity.putExtra("IS_TRIVIATHON", isTriviathon);
                 startActivity(toNewActivity);
             }
         });
@@ -79,8 +106,11 @@ public class MainHubActivity extends AppCompatActivity {
         video_games_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Switch triviathon_switch = (Switch) findViewById(R.id.TriviathonSwitch);
+                boolean isTriviathon = triviathon_switch.isChecked();
                 Intent toNewActivity = new Intent(MainHubActivity.this, GameNavActivity.class);
-                toNewActivity.putExtra("CATEGORY_INDEX", 14);
+                toNewActivity.putExtra("CATEGORY_INDEX", 15);
+                toNewActivity.putExtra("IS_TRIVIATHON", isTriviathon);
                 startActivity(toNewActivity);
             }
         });
@@ -89,8 +119,11 @@ public class MainHubActivity extends AppCompatActivity {
         computers_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Switch triviathon_switch = (Switch) findViewById(R.id.TriviathonSwitch);
+                boolean isTriviathon = triviathon_switch.isChecked();
                 Intent toNewActivity = new Intent(MainHubActivity.this, GameNavActivity.class);
                 toNewActivity.putExtra("CATEGORY_INDEX", 18);
+                toNewActivity.putExtra("IS_TRIVIATHON", isTriviathon);
                 startActivity(toNewActivity);
             }
         });
@@ -99,8 +132,11 @@ public class MainHubActivity extends AppCompatActivity {
         sports_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Switch triviathon_switch = (Switch) findViewById(R.id.TriviathonSwitch);
+                boolean isTriviathon = triviathon_switch.isChecked();
                 Intent toNewActivity = new Intent(MainHubActivity.this, GameNavActivity.class);
                 toNewActivity.putExtra("CATEGORY_INDEX", 21);
+                toNewActivity.putExtra("IS_TRIVIATHON", isTriviathon);
                 startActivity(toNewActivity);
             }
         });
@@ -109,8 +145,11 @@ public class MainHubActivity extends AppCompatActivity {
         geography_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Switch triviathon_switch = (Switch) findViewById(R.id.TriviathonSwitch);
+                boolean isTriviathon = triviathon_switch.isChecked();
                 Intent toNewActivity = new Intent(MainHubActivity.this, GameNavActivity.class);
                 toNewActivity.putExtra("CATEGORY_INDEX", 22);
+                toNewActivity.putExtra("IS_TRIVIATHON", isTriviathon);
                 startActivity(toNewActivity);
             }
         });
@@ -119,8 +158,11 @@ public class MainHubActivity extends AppCompatActivity {
         history_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Switch triviathon_switch = (Switch) findViewById(R.id.TriviathonSwitch);
+                boolean isTriviathon = triviathon_switch.isChecked();
                 Intent toNewActivity = new Intent(MainHubActivity.this, GameNavActivity.class);
                 toNewActivity.putExtra("CATEGORY_INDEX", 23);
+                toNewActivity.putExtra("IS_TRIVIATHON", isTriviathon);
                 startActivity(toNewActivity);
             }
         });
@@ -129,8 +171,11 @@ public class MainHubActivity extends AppCompatActivity {
         art_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Switch triviathon_switch = (Switch) findViewById(R.id.TriviathonSwitch);
+                boolean isTriviathon = triviathon_switch.isChecked();
                 Intent toNewActivity = new Intent(MainHubActivity.this, GameNavActivity.class);
                 toNewActivity.putExtra("CATEGORY_INDEX", 25);
+                toNewActivity.putExtra("IS_TRIVIATHON", isTriviathon);
                 startActivity(toNewActivity);
             }
         });
@@ -139,8 +184,11 @@ public class MainHubActivity extends AppCompatActivity {
         animals_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Switch triviathon_switch = (Switch) findViewById(R.id.TriviathonSwitch);
+                boolean isTriviathon = triviathon_switch.isChecked();
                 Intent toNewActivity = new Intent(MainHubActivity.this, GameNavActivity.class);
                 toNewActivity.putExtra("CATEGORY_INDEX", 27);
+                toNewActivity.putExtra("IS_TRIVIATHON", isTriviathon);
                 startActivity(toNewActivity);
             }
         });
@@ -149,8 +197,11 @@ public class MainHubActivity extends AppCompatActivity {
         vehicles_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Switch triviathon_switch = (Switch) findViewById(R.id.TriviathonSwitch);
+                boolean isTriviathon = triviathon_switch.isChecked();
                 Intent toNewActivity = new Intent(MainHubActivity.this, GameNavActivity.class);
                 toNewActivity.putExtra("CATEGORY_INDEX", 28);
+                toNewActivity.putExtra("IS_TRIVIATHON", isTriviathon);
                 startActivity(toNewActivity);
             }
         });
