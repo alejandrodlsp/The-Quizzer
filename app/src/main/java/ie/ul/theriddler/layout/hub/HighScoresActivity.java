@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import ie.ul.theriddler.R;
 import ie.ul.theriddler.database.DatabaseHandler;
@@ -20,6 +21,9 @@ public class HighScoresActivity extends AppCompatActivity {
      * OnCreate Override
      * @param savedInstanceState
      */
+
+    TextView highscoresScores = (TextView) findViewById(R.id.highscoresScores);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,5 +37,14 @@ public class HighScoresActivity extends AppCompatActivity {
                 startActivity( new Intent (HighScoresActivity.this, MainHubActivity.class));
             }
         });
+
+        String builder = "";
+        for(final Question.Category category : Question.Category.values()) {
+            builder += category.ToString() + ":";
+            int highscore = DatabaseHandler.GetInstance().GetCategoryHighscore(category);
+            builder += highscore + "\n";
+        }
+
+        highscoresScores.setText(builder);
     }
 }

@@ -43,14 +43,13 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/HighScoreScores"
+        android:id="@+id/highscoresScores"
         android:layout_width="249dp"
         android:layout_height="229dp"
         android:layout_marginStart="35dp"
         android:layout_marginTop="280dp"
         android:layout_marginEnd="35dp"
         android:fontFamily="@font/antic_slab"
-        android:text="General Knowledge: 50 points!"
         android:textAlignment="center"
         android:textColor="#22293D"
         android:textSize="18sp"
