@@ -7,7 +7,11 @@ You can answer questions from specific categories in a normal format or try the 
 Use the return button in the top right corner to return through menus. 
 You  may also log out at any time in the highscore fragment. 
 ##
-### Project members:
+
+### Building the APK:
+- You should be able to open the project using AndroidStudio and build an APK using the default configuration.
+
+### Contributors:
 
  - (18261183) - Daniel Dunford
  - (18218822) - Alejandro de los Santos Puerto
