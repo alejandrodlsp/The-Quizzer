@@ -7,11 +7,18 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Switch;
+import android.widget.TextView;
+
+import com.google.firebase.auth.FirebaseAuth;
+
+import org.w3c.dom.Text;
 
 import java.util.Hashtable;
 
 import ie.ul.theriddler.R;
+import ie.ul.theriddler.database.DatabaseHandler;
 import ie.ul.theriddler.layout.game.GameNavActivity;
+import ie.ul.theriddler.layout.login.LoginRegisterActivity;
 
 /**
  *
@@ -48,16 +55,39 @@ public class MainHubActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_hub);
 
+        TextView rankingView = (TextView) findViewById(R.id.rankingView);
+        TextView total_points_textView = (TextView) findViewById(R.id.total_points_textView);
+
+        String rankBuilder = "Current Rank: ";
+        String totalPoints = "Total Points: ";
+
+        int rank = DatabaseHandler.GetInstance().GetTotalRanking();
+        rankBuilder += rank;
+        rankingView.setText(rankBuilder);
+
+        int points = DatabaseHandler.GetInstance().GetTotalAnsweredQuestions();
+        totalPoints += points;
+        total_points_textView.setText(totalPoints);
+
         /* Go trough all buttons and add OnClick event listeners */
 
-        Button high_score_button = (Button) findViewById(R.id.high_score_button);
-        high_score_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent (MainHubActivity.this, HighScoresActivity.class));
-            }
-        });
-
+        if(FirebaseAuth.getInstance().getCurrentUser().getUid() != null) {
+            Button high_score_button = (Button) findViewById(R.id.high_score_button);
+            high_score_button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent(MainHubActivity.this, HighScoresActivity.class));
+                }
+            });
+        }else{
+            Button high_score_button = (Button) findViewById(R.id.high_score_button);
+            high_score_button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent (MainHubActivity.this, LoginRegisterActivity.class));
+                }
+            });
+        }
         /*
          * Loop trough category button hashmap and add onClick listeners to each one of them
          * */

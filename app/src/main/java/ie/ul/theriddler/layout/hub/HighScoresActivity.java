@@ -45,5 +45,9 @@ public class HighScoresActivity extends AppCompatActivity {
         }
 
         highscoresScores.setText(builder);
+
+        String rankBuilder = "Total Ranking: ";
+        int rank = DatabaseHandler.GetInstance().GetTotalRanking();
+        rankBuilder += rank;
     }
 }
