@@ -9,6 +9,7 @@ import android.widget.Button;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 
@@ -34,6 +35,8 @@ public class MainActivity extends AppCompatActivity  {
         setContentView(R.layout.activity_main);
 
         SoundPlayer player = new SoundPlayer(this);
+
+
 
         // Login button callback
         Button loginButton = (Button) findViewById(R.id.loginButton);

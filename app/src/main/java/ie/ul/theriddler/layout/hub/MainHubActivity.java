@@ -7,9 +7,15 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Switch;
+import android.widget.TextView;
+
+import com.google.firebase.auth.FirebaseAuth;
 
 import ie.ul.theriddler.R;
+import ie.ul.theriddler.database.DatabaseHandler;
 import ie.ul.theriddler.layout.game.GameNavActivity;
+import ie.ul.theriddler.layout.login.LoginRegisterActivity;
+import ie.ul.theriddler.questions.Question;
 
 /**
  *
@@ -25,17 +31,31 @@ public class MainHubActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_hub);
 
+        TextView rankingView = (TextView) findViewById(R.id.rankingView);
+        TextView totalPointsView = (TextView) findViewById(R.id.total_points_textView);
 
 
         /* Go trough all buttons and add OnClick event listeners */
 
-        Button high_score_button = (Button) findViewById(R.id.high_score_button);
-        high_score_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent (MainHubActivity.this, HighScoresActivity.class));
-            }
-        });
+        if(FirebaseAuth.getInstance().getCurrentUser().getUid() != null){
+            Button high_score_button = (Button) findViewById(R.id.high_score_button);
+            high_score_button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent (MainHubActivity.this, HighScoresActivity.class));
+                }
+            });
+        }else{
+            Button high_score_button = (Button) findViewById(R.id.high_score_button);
+            high_score_button.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent (MainHubActivity.this, LoginRegisterActivity.class));
+                }
+            });
+        }
+
+
 
         Button all_questions_button = (Button) findViewById(R.id.all_questions_button);
         all_questions_button.setOnClickListener(new View.OnClickListener() {
@@ -205,6 +225,19 @@ public class MainHubActivity extends AppCompatActivity {
                 startActivity(toNewActivity);
             }
         });
+
+        String builder = "Ranking: ";
+
+        int ranking = DatabaseHandler.GetInstance().GetTotalRanking();
+        builder += ranking;
+        rankingView.setText(builder);
+
+
+        String pointsBuilder = "Total Points: ";
+
+        int totalPoints = DatabaseHandler.GetInstance().GetTotalAnsweredQuestions();
+        pointsBuilder += totalPoints;
+        totalPointsView.setText(pointsBuilder);
 
     }
 
