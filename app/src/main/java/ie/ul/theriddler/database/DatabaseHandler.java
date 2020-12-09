@@ -73,6 +73,25 @@ public class DatabaseHandler {
         {
             mCategoryScores.add(new CategoryScore(category, 0));
             DatabaseReference dbr = mCategoriesDatabase.child(category.toString()).child(uid);
+            dbr.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    if(snapshot.getValue() == null) return;
+
+                    String scoreStr = snapshot.getValue().toString();
+                    int score = Integer.parseInt(scoreStr);
+                    for(CategoryScore sc : mCategoryScores)
+                    {
+                        if(sc.mCategory == category)
+                            sc.mScore = score;
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                    Log.w("DB","Failed to read DB value for category.", error.toException());
+                }
+            });
             dbr.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -108,8 +127,11 @@ public class DatabaseHandler {
         dbr.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                String answeredQuestionsSt = snapshot.getValue().toString();
-                mUserScore = Integer.parseInt(answeredQuestionsSt);
+                if(snapshot.getValue() != null)
+                {
+                    String answeredQuestionsSt = snapshot.getValue().toString();
+                    mUserScore = Integer.parseInt(answeredQuestionsSt);
+                }
             }
 
             @Override
@@ -130,11 +152,13 @@ public class DatabaseHandler {
                 // For every user in the DB
                 for(DataSnapshot snp : snapshot.getChildren())
                 {
-                    // Get score of user
-                    String userScoreStr = snp.getValue().toString();
-                    int userScore = Integer.parseInt(userScoreStr);
-                    // If user's score is greater than our score, update totalRanking
-                    if(userScore > totalScore) totalRanking ++;
+                    if(snapshot.getValue() != null) {
+                        // Get score of user
+                        String userScoreStr = snp.getValue().toString();
+                        int userScore = Integer.parseInt(userScoreStr);
+                        // If user's score is greater than our score, update totalRanking
+                        if (userScore > totalScore) totalRanking++;
+                    }
                 }
 
                 // Save total ranking
