@@ -31,6 +31,7 @@ public class HighScoresActivity extends AppCompatActivity {
         setContentView(R.layout.activity_high_scores);
 
         TextView highscoresScores = (TextView) findViewById(R.id.highscoresScores);
+        TextView rankingText = (TextView) findViewById(R.id.ranking_texView);
         Button logoutButn = (Button) findViewById(R.id.logout_button);
 
         if(FirebaseAuth.getInstance().getCurrentUser() != null)
@@ -59,6 +60,7 @@ public class HighScoresActivity extends AppCompatActivity {
         });
 
         String builder = "";
+        if(FirebaseAuth.getInstance().getCurrentUser() != null)
         for(final Question.Category category : Question.Category.values()) {
             builder += category.ToString() + ":";
             int highscore = DatabaseHandler.GetInstance().GetCategoryHighscore(category);
@@ -68,7 +70,11 @@ public class HighScoresActivity extends AppCompatActivity {
         highscoresScores.setText(builder);
 
         String rankBuilder = "Total Ranking: ";
-        int rank = DatabaseHandler.GetInstance().GetTotalRanking();
-        rankBuilder += rank;
+        if(FirebaseAuth.getInstance().getCurrentUser() != null) {
+            int rank = DatabaseHandler.GetInstance().GetTotalRanking();
+            rankBuilder += rank;
+        }
+        rankingText.setText(rankBuilder);
+
     }
 }
