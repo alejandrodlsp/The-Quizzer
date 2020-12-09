@@ -12,6 +12,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import ie.ul.theriddler.R;
 import ie.ul.theriddler.database.DatabaseHandler;
+import ie.ul.theriddler.layout.MainActivity;
 import ie.ul.theriddler.layout.login.LoginRegisterActivity;
 import ie.ul.theriddler.questions.Question;
 
@@ -40,7 +41,7 @@ public class HighScoresActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     FirebaseAuth.getInstance().signOut();
-                    startActivity(new Intent ( HighScoresActivity.this, LoginRegisterActivity.class));
+                    startActivity(new Intent ( HighScoresActivity.this, MainActivity.class));
                 }
             });
         } else
