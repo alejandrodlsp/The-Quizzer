@@ -52,7 +52,7 @@
         android:fontFamily="@font/antic_slab"
         android:textAlignment="center"
         android:textColor="#22293D"
-        android:textSize="18sp"
+        android:textSize="12sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.513"
