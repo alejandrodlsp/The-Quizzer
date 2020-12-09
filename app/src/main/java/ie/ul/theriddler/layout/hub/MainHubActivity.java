@@ -61,11 +61,15 @@ public class MainHubActivity extends AppCompatActivity {
         String rankBuilder = "Current Rank: ";
         String totalPoints = "Total Points: ";
 
-        int rank = DatabaseHandler.GetInstance().GetTotalRanking();
+        String rank = "?";
+        if(FirebaseAuth.getInstance().getCurrentUser() != null)
+            rank = Integer.toString( DatabaseHandler.GetInstance().GetTotalRanking() );
         rankBuilder += rank;
         rankingView.setText(rankBuilder);
 
-        int points = DatabaseHandler.GetInstance().GetTotalAnsweredQuestions();
+        String points = "?";
+        if(FirebaseAuth.getInstance().getCurrentUser() != null)
+            points = Integer.toString( DatabaseHandler.GetInstance().GetTotalAnsweredQuestions() );
         totalPoints += points;
         total_points_textView.setText(totalPoints);
 
