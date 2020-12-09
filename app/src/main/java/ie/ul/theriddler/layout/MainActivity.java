@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity  {
         });
 
         // If logged in already redirect to main hub automatically
-        if(FirebaseAuth.getInstance().getCurrentUser().getUid() != null)
+        if(FirebaseAuth.getInstance().getCurrentUser() != null)
         {
             startActivity(new Intent (MainActivity.this, MainHubActivity.class));
         }

@@ -32,7 +32,7 @@ public class HighScoresActivity extends AppCompatActivity {
         TextView highscoresScores = (TextView) findViewById(R.id.highscoresScores);
         Button logoutButn = (Button) findViewById(R.id.logout_button);
 
-        if(FirebaseAuth.getInstance().getCurrentUser().getUid() != null)
+        if(FirebaseAuth.getInstance().getCurrentUser() != null)
         {
             logoutButn.setEnabled(true);
             logoutButn.setOnClickListener(new View.OnClickListener()

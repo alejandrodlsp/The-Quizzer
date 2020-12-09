@@ -73,7 +73,7 @@ public class ScoreFragment extends Fragment {
         String scoreText = "Your Score: " + mActivity.mCurrentScore;
 
         // Check if user is logged in
-        if(FirebaseAuth.getInstance().getCurrentUser().getUid() != null)
+        if(FirebaseAuth.getInstance().getCurrentUser() != null)
         {
             int highscore = DatabaseHandler.GetInstance().GetCategoryHighscore(mActivity.GetCategory());
             if(mActivity.mCurrentScore > highscore)

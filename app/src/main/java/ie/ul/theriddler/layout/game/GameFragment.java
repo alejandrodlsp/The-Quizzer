@@ -208,7 +208,7 @@ public class GameFragment extends Fragment implements IOnAPIQueryCallback {
         mCorrectAnswerCount ++;
 
         // If user is logged in
-        if(FirebaseAuth.getInstance().getCurrentUser().getUid() != null)
+        if(FirebaseAuth.getInstance().getCurrentUser() != null)
         {
             // Increment total answered questions
             DatabaseHandler.GetInstance().IncrementTotalAnsweredQuestions();

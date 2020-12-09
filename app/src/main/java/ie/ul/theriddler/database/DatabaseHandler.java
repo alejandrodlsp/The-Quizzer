@@ -48,7 +48,7 @@ public class DatabaseHandler {
      */
     private DatabaseHandler()
     {
-        if(FirebaseAuth.getInstance().getCurrentUser().getUid() == null)
+        if(FirebaseAuth.getInstance().getCurrentUser() == null)
             Log.w("AUTH", "Could not generate database handler, user is not authenticated");
 
         mDatabase = FirebaseDatabase.getInstance();

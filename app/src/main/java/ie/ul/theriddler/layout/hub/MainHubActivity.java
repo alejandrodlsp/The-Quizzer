@@ -71,7 +71,7 @@ public class MainHubActivity extends AppCompatActivity {
 
         /* Go trough all buttons and add OnClick event listeners */
 
-        if(FirebaseAuth.getInstance().getCurrentUser().getUid() != null) {
+        if(FirebaseAuth.getInstance().getCurrentUser() != null) {
             Button high_score_button = (Button) findViewById(R.id.high_score_button);
             high_score_button.setText("CHECK HIGHSCORES");
             high_score_button.setOnClickListener(new View.OnClickListener() {
