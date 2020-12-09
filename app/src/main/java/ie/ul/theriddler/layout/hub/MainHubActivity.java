@@ -73,6 +73,7 @@ public class MainHubActivity extends AppCompatActivity {
 
         if(FirebaseAuth.getInstance().getCurrentUser().getUid() != null) {
             Button high_score_button = (Button) findViewById(R.id.high_score_button);
+            high_score_button.setText("CHECK HIGHSCORES");
             high_score_button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -81,6 +82,7 @@ public class MainHubActivity extends AppCompatActivity {
             });
         }else{
             Button high_score_button = (Button) findViewById(R.id.high_score_button);
+            high_score_button.setText("LOG IN");
             high_score_button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -88,8 +90,9 @@ public class MainHubActivity extends AppCompatActivity {
                 }
             });
         }
+
         /*
-         * Loop trough category button hashmap and add onClick listeners to each one of them
+         * Loop trough category button hashtable and add onClick listeners to each one of them
          * */
         for(int rId : kCategoryButtonTable.keySet()) {
             int categoryIndex = kCategoryButtonTable.get(rId);
