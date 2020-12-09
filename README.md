@@ -1,4 +1,4 @@
-# The Riddler
+# The Quizzer
 A quiz app made for CS4084 in Android Studio using Firebase AUTH, Firestore and [OpenTriviaDB]
 
 Create an account using FireBaseAuth to log in or play as guest.
