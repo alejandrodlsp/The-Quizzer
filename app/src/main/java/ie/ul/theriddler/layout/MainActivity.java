@@ -7,18 +7,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import com.android.volley.RequestQueue;
-import com.android.volley.toolbox.Volley;
-
-import java.util.ArrayList;
+import com.google.firebase.auth.FirebaseAuth;
 
 import ie.ul.theriddler.R;
-import ie.ul.theriddler.SoundPlayer;
 import ie.ul.theriddler.layout.hub.MainHubActivity;
 import ie.ul.theriddler.layout.login.LoginRegisterActivity;
-import ie.ul.theriddler.questions.IOnAPIQueryCallback;
-import ie.ul.theriddler.questions.Question;
-import ie.ul.theriddler.questions.QuestionHandler;
 
 /**
  * Main activity
@@ -33,14 +26,11 @@ public class MainActivity extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        SoundPlayer player = new SoundPlayer(this);
-
         // Login button callback
         Button loginButton = (Button) findViewById(R.id.loginButton);
         loginButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, LoginRegisterActivity.class));
-                player.PlayClickSound();
             }
         });
 
@@ -49,9 +39,14 @@ public class MainActivity extends AppCompatActivity  {
         guestButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 startActivity(new Intent (MainActivity.this, MainHubActivity.class));
-                player.PlayClickSound();
             }
         });
+
+        // If logged in already redirect to main hub automatically
+        if(FirebaseAuth.getInstance().getCurrentUser().getUid() != null)
+        {
+            startActivity(new Intent (MainActivity.this, MainHubActivity.class));
+        }
     }
 
 
