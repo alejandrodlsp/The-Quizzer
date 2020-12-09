@@ -8,8 +8,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
 import ie.ul.theriddler.R;
 import ie.ul.theriddler.database.DatabaseHandler;
 import ie.ul.theriddler.questions.Question;
@@ -29,7 +27,6 @@ public class HighScoresActivity extends AppCompatActivity {
         setContentView(R.layout.activity_high_scores);
 
         TextView highscoresScores = (TextView) findViewById(R.id.highscoresScores);
-        TextView ranking_textView = (TextView) findViewById(R.id.ranking_texView);
 
         // Add event listener to main hub button
         Button main_hub_button = (Button) findViewById(R.id.main_hub_button);
@@ -48,14 +45,5 @@ public class HighScoresActivity extends AppCompatActivity {
         }
 
         highscoresScores.setText(builder);
-
-        String rankingBuilder = "Total Ranking: ";
-        int rank = DatabaseHandler.GetInstance().GetTotalRanking();
-        rankingBuilder += rank;
-
-        ranking_textView.setText(rankingBuilder);
     }
-
-
-
 }
