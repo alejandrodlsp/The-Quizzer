@@ -1,4 +1,4 @@
-#Design Specification
+# Design Specification
 
 Technical Design
 Which technologies did you use?
