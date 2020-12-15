@@ -19,3 +19,6 @@ You  may also log out at any time in the highscore fragment.
  - (18219772) - Ruixue Liu
 
  [OpenTriviaDB]: <https://opentdb.com/browse.php>
+ 
+ ###**More Information : **
+ [GitHub](structure.md)
