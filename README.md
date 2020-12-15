@@ -20,5 +20,5 @@ You  may also log out at any time in the highscore fragment.
 
  [OpenTriviaDB]: <https://opentdb.com/browse.php>
  
- ### **More Information : **
+ ### More Information : 
  [Navigation Structure](structure.md)
