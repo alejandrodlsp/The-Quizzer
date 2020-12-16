@@ -1,11 +1,5 @@
 # Design Specification
 
-Technical Design
-Which technologies did you use?
-Which technical design choices did you make?
-Any lessons learned? E.g., what would you do differently next time?
-
-
 For our project we decided to use a mix of different technologies and APIs. For login and authentication services, we decided to use Firebase AUTH; the reason we decided on this is because of our prior knowledge with the API, its vast documentation and online help, and it's simplistic desing. We decided to not use any premade UI like w had done before, but rather implement our own UI system that would handle all functionality regarding loging in, registering new users, and authentication. Our system also allowed for users to play as guests, allowing them to bypass the loging in process, but restrinsting some features such as highscores and rankings.
 
 ![firebase auth logo](https://2.bp.blogspot.com/-2L3KX_48TEQ/XJ0AIfGqG9I/AAAAAAAADew/tiTNwPkS84Y2lPmM8z6IQadB_TRxETHLwCLcBGAs/s1600/Firebase%2BAuthentication%2B%25282-%2BHorizontal%2BLockup%252C%2BLight%2529.png) 
