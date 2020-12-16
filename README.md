@@ -31,5 +31,5 @@ You can keep track of your highscores and rank by creating a free account.
   - [Firebase Auth](https://firebase.google.com/products/auth)
  
  ### More Information : 
- [Navigation Structure](structure.md)
- [Design Specification](design.md)
+ *[Navigation Structure](structure.md)
+ *[Design Specification](design.md)
