@@ -32,3 +32,4 @@ You can keep track of your highscores and rank by creating a free account.
  
  ### More Information : 
  [Navigation Structure](structure.md)
+ [Design Specification](design.md)
