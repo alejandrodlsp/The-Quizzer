@@ -1,10 +1,10 @@
 # The Quizzer
 A quiz app made for CS4084 in Android Studio using Firebase AUTH, Firestore and [OpenTriviaDB]
 
-The Quizzer is a trivia game app that challenges users based on their selected category with an array of questions.
+The Quizzer is a trivia game app where users select a category they want to be challenged on,  which will give them an array of questions.
 This app can be enjoyed by all users who download it as there are a multitude of selections to choose from to meet their specific difficulty levels.
 You can answer questions from specific categories in a normal format or try the triviathon mode for a 60 second intense challenge.
-You can keep track of your highscores and rank by creating an account.
+You can keep track of your highscores and rank by creating a free account.
 ##
 
 ### Getting Started:
