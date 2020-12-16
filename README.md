@@ -24,9 +24,9 @@ You can keep track of your highscores and rank by creating an account.
  [OpenTriviaDB]: <https://opentdb.com/browse.php>
 
 ### APIs Implemented :
-  - [Open Trivia Database] (https://opentdb.com/api_config.php)
-  - [Firebase Project] (https://firebase.google.com/docs/database)
-  - [Firebase Auth] (https://firebase.google.com/products/auth)
+  - [Open Trivia Database](https://opentdb.com/api_config.php)
+  - [Firebase Project](https://firebase.google.com/docs/database)
+  - [Firebase Auth](https://firebase.google.com/products/auth)
  
  ### More Information : 
  [Navigation Structure](structure.md)
