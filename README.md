@@ -1,4 +1,6 @@
-# The Quizzer
+# The Quizzer 
+![](https://github.com/alejandrodlsp/The-Quizzer/blob/master/images/logo.png)
+
 A quiz app made for CS4084 in Android Studio using Firebase AUTH, Firestore and [OpenTriviaDB]
 
 The Quizzer is a trivia game app where users select a category they want to be challenged on,  which will give them an array of questions.
